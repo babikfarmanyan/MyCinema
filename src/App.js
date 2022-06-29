@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect} from 'react';
+import {getOriginalImg, getW500Img} from './config'
 
 function App() {
+
+  // const [movies, setMovies] = useState([]);
+
+  // useEffect(() => {
+  //   getMostPopularMovies().then(data => {
+  //     setMovies(data.results.slice(0, 6))
+  //   })
+  // }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* {
+        movies.map(movie => (
+          <p key={movie.id}>{movie.id}</p>
+        ))
+      } */}
+      <img src={getW500Img('/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg')}></img>
     </div>
   );
 }
