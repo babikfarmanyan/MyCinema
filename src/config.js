@@ -5,6 +5,18 @@ const getMostPopularMovies = async(page) => {
     return response.json();
 };
 
+const getTopRated = async(catName) => {
+    let response;
+
+    if (catName === 'movies') {
+        response = await fetch(API_URL + '/movie/top_rated');
+    }else if (catName === 'serials') {
+        response = await fetch(API_URL + '/tv/top_rated');
+    }
+
+    return response.json();
+}
+
 const getOriginalImg = (imgUrl) => {
     return IMG_URL + imgUrl;
 }

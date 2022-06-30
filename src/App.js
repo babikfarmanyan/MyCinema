@@ -1,25 +1,29 @@
 import './App.css';
-import {useState, useEffect} from 'react';
-import {getOriginalImg, getW500Img} from './config'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+
+// Components
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+// Pages
+import Home from './pages/Home/Home';
+import Categories from './pages/Categories/Categories';
+import Detail from './pages/Detail/Detail';
+import Registration from './pages/Registration/Registration';
 
 function App() {
-
-  // const [movies, setMovies] = useState([]);
-
-  // useEffect(() => {
-  //   getMostPopularMovies().then(data => {
-  //     setMovies(data.results.slice(0, 6))
-  //   })
-  // }, [])
   return (
-    <div className="App">
-      {/* {
-        movies.map(movie => (
-          <p key={movie.id}>{movie.id}</p>
-        ))
-      } */}
-      <img src={getW500Img('/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg')}></img>
-    </div>
+    <>
+      <Router>
+        <Header/>
+          <Routes>
+              <Route path='/' element={<Home />}/>
+              <Route path='/categories/:name' element={<Categories />}/>
+              <Route path='/movie/:id' element={<Detail />}></Route>
+              <Route path='/registration' element={<Registration/>}></Route>
+          </Routes>
+        <Footer/>
+      </Router>
+    </>
   );
 }
 
