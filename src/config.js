@@ -9,16 +9,23 @@ const getTopRated = async(catName) => {
     let response;
 
     if (catName === 'movies') {
-        response = await fetch(API_URL + '/movie/top_rated');
+        response = await fetch(`${API_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
     }else if (catName === 'serials') {
-        response = await fetch(API_URL + '/tv/top_rated');
+        response = await fetch(`${API_URL}/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
     }
 
     return response.json();
 }
 
-const getGanres = async() => {
-    const response = await fetch(`${API_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
+const getGanres = async(catName) => {
+    let response;
+
+    if (catName === 'movies') {
+        response = await fetch(`${API_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
+    }else if (catName === 'serials') {
+        response = await fetch(`${API_URL}/genre/tv/list?api_key=${API_KEY}&language=en-US`);
+    }
+
     return response.json();
 }
 

@@ -15,7 +15,7 @@ const Slider = () => {
   useEffect(() => {
     getMostPopularMovies().then(data => setPopularMovies(data.results.slice(0, 6)));
 
-    getGanres().then(genres => setGenres(genres.genres));
+    getGanres('movies').then(genres => setGenres(genres.genres));
   }, [])
 
   return (

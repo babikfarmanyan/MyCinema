@@ -1,8 +1,12 @@
 import Slider from '../../components/Slider/Slider';
+import CategoryList from '../../components/CategoryList/CaregoryList';
 
 const Home = () => {
     return (
-        <Slider />
+        <>
+            <Slider />
+            <CategoryList catName={'movies'} />
+        </>
     )
 }
 
