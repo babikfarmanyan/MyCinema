@@ -12,10 +12,6 @@
     --darkGray: #222;
     --red: rgb(223, 21, 48);
 }
-body
-{
-    background: red;
-}
 #root
 {
     width: 100%;
