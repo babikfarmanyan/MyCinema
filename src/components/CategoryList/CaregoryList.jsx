@@ -9,24 +9,24 @@ import './CategoryList.css'
 
 const CaregoryList = ({catName}) => {
 
-  const [movies, setMovies] = useState([]);
+  const [watchData, setWatchData] = useState([]);
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    getTopRated(catName).then(data => setMovies(data.results.slice(0, 5)));
+    getTopRated(catName).then(data => setWatchData(data.results.slice(0, 5)));
     getGanres(catName).then(genres => setGenres(genres.genres));
   }, [])
 
   return (
     <section className="category">
-      <Link className='category__title' to={'/categories/movies'}>Movies</Link>
+      <Link className='category__title' to={`/categories/${catName}`}>{catName}</Link>
       <div className='category__list'>
         {
-          movies.map(movie => (
-            <CategoryItem key={movie.id} movie={movie} genres={genres} />
+          watchData.map(watchItem => (
+            <CategoryItem key={watchItem.id} watchItem={watchItem} genres={genres} />
           ))
         }
-      <Link className='seemore' to={'/categories/movies'}>SEE MORE</Link>
+      <Link className='seemore' to={`/categories/${catName}`}>SEE MORE</Link>
       </div>
     </section>
   )

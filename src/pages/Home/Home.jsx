@@ -6,6 +6,7 @@ const Home = () => {
         <>
             <Slider />
             <CategoryList catName={'movies'} />
+            <CategoryList catName={'serials'} />
         </>
     )
 }
