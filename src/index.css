@@ -5,15 +5,22 @@
     box-sizing: border-box;
     list-style: none;
 }
+:root
+{
+    --mainColor: #000;
+    --white: #fff;
+    --darkGray: #222;
+    --red: rgb(223, 21, 48);
+}
 body
 {
-    background-color: #000;
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
     background: red;
 }
 #root
 {
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--mainColor);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
 }

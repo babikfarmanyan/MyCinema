@@ -15,7 +15,7 @@ const SliderItem = ({movie, genres}) => {
                 genres.map(genre => {
                   if (movie.genre_ids.includes(genre.id)) {
                     return (
-                      <span>{genre.name}</span>
+                      <span key={genre.id}>{genre.name}</span>
                     )
                   }
                 })
