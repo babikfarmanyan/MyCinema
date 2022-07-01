@@ -1,13 +1,8 @@
-import React from 'react'
+import Slider from '../../components/Slider/Slider';
 
 const Home = () => {
-    // petqa lini slidery <Slider />
-    // petqa lini CtegoryPage catName={'movies'} {Ira itemnerov}
-    // abouty
-    // petqa lini CtegoryPage catName={'serials'} {Ira itemnerov}
-    // petqa lini CtegoryPage catName={cartoons} {Ira itemnerov}
     return (
-        <div>home</div>
+        <Slider />
     )
 }
 
