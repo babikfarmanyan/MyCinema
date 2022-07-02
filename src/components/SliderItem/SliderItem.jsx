@@ -9,7 +9,6 @@ const SliderItem = ({movie, genres}) => {
         <img src={getOriginalImg(movie.backdrop_path)} alt="" />
         <div className='slider__item__content'>
             <h3>{movie.original_title}</h3>
-            <p>{movie.overview}</p>
             <div className='genres'>
               {
                 genres.map(genre => {
