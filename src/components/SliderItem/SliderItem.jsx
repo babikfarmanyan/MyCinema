@@ -1,5 +1,6 @@
 import React from 'react';
 import { getOriginalImg } from '../../config';
+import {NavLink as Link} from 'react-router-dom';
 
 import './SliderItem.css';
 
@@ -20,7 +21,7 @@ const SliderItem = ({movie, genres}) => {
                 })
               }
             </div>
-            <button>see now</button>
+            <Link to={`/watch/${movie.id}`} className='seemore-link'>see more</Link>
         </div>
     </div>
   )
