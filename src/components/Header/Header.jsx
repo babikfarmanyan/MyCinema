@@ -1,8 +1,15 @@
 import { NavLink as Link } from "react-router-dom"
 import './Header.css';
+import { useState} from 'react';
+import LogIn from "../LogIn/LogIn";
 
 const Header = () => {
+
+  const [showLogin,setShowLogin]=useState(false);
+
   return (
+    
+    
     <div className="header">
       <div className="header__logo">
         <Link to={'/'}><span>My</span>Cinema</Link>
@@ -37,10 +44,12 @@ const Header = () => {
         </form>
 
         <i className="fa-regular fa-heart"></i>
-        <i className="fa-regular fa-user"></i>
+        <i className="fa-regular fa-user" onClick={()=>setShowLogin(true)}></i>
       </div>
-
+      {showLogin && <LogIn/>}
     </div>
+    
+  
   )
 }
 
