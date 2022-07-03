@@ -90,4 +90,9 @@
     {
         display: initial;
     }
+
+    .header__navbar
+    {
+        display: none;
+    }
 }
