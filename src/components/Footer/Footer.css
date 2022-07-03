@@ -1,0 +1,73 @@
+.footer
+{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 2px solid var(--darkGray);
+    margin-top: 50px;
+    padding: 50px 0px 50px 0px;
+    position: relative;
+}
+.footer h3
+{
+    font-size: 20px;
+    opacity: .9;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+.footer .footer__navlinks .navlink-box
+{
+    display: flex;
+    gap: 10px;
+}
+.footer .footer__navlinks .navlink-box a, .category-box a
+{
+    color: var(--white);
+    opacity: .6;
+}
+.footer .footer__navlinks .navlink-box a:hover, .category-box a:hover
+{
+    opacity: 1;
+}
+.footer__contact
+{
+    margin-top: 10%;
+}
+.category-box
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.contact-box
+{
+    display: flex;
+    gap: 10px;
+}
+.contact-box a
+{
+    background: var(--darkGray);
+    padding: 10px;
+    font: 20px;
+    border-radius: 50%;
+    transition: .3s ease-in;
+}
+.contact-box a i
+{
+    font-size: 18px;
+    color: var(--white);
+}
+.contact-box a:hover
+{
+    transform: scale(1.3);
+    transition: 1s;
+   
+    
+}
+.contact-box a:hover i {
+    transform: rotatey(360deg);
+    color: red;
+    transition: 2s;
+}

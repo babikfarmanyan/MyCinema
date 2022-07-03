@@ -1,0 +1,20 @@
+.about h3, .about p, .about li, .about h4
+{
+    margin-top: 30px;
+    color: var(--white);
+    opacity: .6;
+}
+.about ul
+{
+    padding: 0px 50px 0px 50px;
+}
+.about h3
+{
+    opacity: 1;
+    font-size: 25px;
+    line-height: 30px;
+}
+.about p, .about li
+{
+    line-height: 20px;
+}
