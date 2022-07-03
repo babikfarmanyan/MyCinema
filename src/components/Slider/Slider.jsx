@@ -13,8 +13,7 @@ const Slider = () => {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    getMostPopular('movies').then(data => setPopularMovies(data.results.slice(0, 6)));
-
+    getMostPopular('movies').then(data => setPopularMovies(data.results.slice(0, 10)));
     getGanres('movies').then(genres => setGenres(genres.genres));
   }, [])
 
