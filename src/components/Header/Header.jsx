@@ -46,7 +46,7 @@ const Header = () => {
         <i className="fa-regular fa-heart"></i>
         <i className="fa-regular fa-user" onClick={()=>setShowLogin(true)}></i>
       </div>
-      {showLogin && <LogIn/>}
+      {showLogin && <LogIn setShowLogin={setShowLogin}/>}
     </div>
     
   

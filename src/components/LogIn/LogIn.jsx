@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import { NavLink as Link } from "react-router-dom"
 import {useRef, useState,useEffect} from 'react';
 import "./LogIn.css";
 
 
-const LogIn = () => {
+
+
+
+const LogIn = ({setShowLogin}) => {
 
 const userRef= useRef();
 const errRef = useRef();
@@ -25,11 +29,12 @@ useEffect(()=> {
 
   return (  
   <div className="user">
+    
     <div className="user__content">
-            <div className="user__buttons">
-                <button className="log-in__button">Log In</button>
-                <button className="resgistratuin__button">Registration</button>
-            </div>
+        
+               <span><h3>Log In</h3> </span>
+               <i className="fa-solid fa-xmark"  onClick={()=>setShowLogin(false)}></i>
+  
         <div className="user__box">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <form className="user__log-in">
@@ -45,7 +50,7 @@ useEffect(()=> {
                         />
                         <input type="password"
                         id="password"
-                        placeholder="User name"
+                        placeholder="Password"
                         ref={userRef}
                         onChange={(e)=>
                         setPwd(e.target.value)}
@@ -53,6 +58,8 @@ useEffect(()=> {
                         required
                         />
                         <input type="submit" value="Log In"></input>
+
+                        <span>New to MyCinema <Link to={'/page/'}>Register NOW !!!</Link></span>
                     </form>
                    
                 </div>
@@ -62,4 +69,4 @@ useEffect(()=> {
   )
 }
 
-export default LogIn
+export default LogIn 
