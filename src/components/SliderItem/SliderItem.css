@@ -33,7 +33,7 @@
     font-weight: 600;
     margin-bottom: 10px;
 }
-.slider__item__content button
+.slider__item__content .seemore-link
 {
     font-size: 20px;
     text-transform: uppercase;
@@ -44,7 +44,7 @@
     background: var(--red);
     cursor: pointer;
 }
-.slider__item__content button:hover
+.slider__item__content .seemore-link:hover
 {
     box-shadow: 0px 0px 2px 2px var(--red);
 }
