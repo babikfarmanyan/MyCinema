@@ -58,8 +58,6 @@ useEffect(()=> {
                         required
                         />
                         <input type="submit" value="Log In"></input>
-
-                        <span>New to MyCinema <Link to={'/page/'}>Register NOW !!!</Link></span>
                     </form>
                    
                 </div>

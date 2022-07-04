@@ -34,7 +34,13 @@ const getOriginalImg = (imgUrl) => {
 }
 
 const getW500Img = (imgUrl) => {
-    return w500IMG_URL + imgUrl;
+    return w500IMG_URL + imgUrl;    
 }
 
-export {getMostPopularMovies, getOriginalImg, getW500Img, getTopRated, getGanres};
+const getDetailById = async (id) => {
+    const response = await fetch(`${API_URL}/movie/338953(${id}casts?api_key=${API_KEY}`);
+    return response.json();
+
+}   
+ 
+export {getMostPopularMovies, getOriginalImg, getW500Img, getTopRated, getGanres, getDetailById};
