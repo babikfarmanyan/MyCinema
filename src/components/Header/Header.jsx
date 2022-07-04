@@ -24,11 +24,9 @@ const Header = () => {
           <Link to={'/categories/cartoons'}>Cartoons</Link>
       </div>
 
-      <div className="header__icon">
-        <form>
-        <input type="search" className="header__search" placeholder="Search..."/>
-        </form>
+      <input type="search" className="header__search" placeholder="Search..."/>
 
+      <div className="header__icon">
         <i className="fa-regular fa-heart"></i>
         <i className="fa-regular fa-user"></i>
       </div>

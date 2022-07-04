@@ -37,3 +37,11 @@
     font-size: 20px;
     cursor: pointer;
 }
+@media (max-width: 640px)
+{
+    .mobile-menu
+    {
+        width: 60%;
+        z-index: 10000;
+    }
+}
