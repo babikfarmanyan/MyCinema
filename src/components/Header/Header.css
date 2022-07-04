@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 .header__logo {
@@ -77,6 +78,7 @@
 .mobile-menu__btn
 {
     background: none;
+    border: none;
     display: none;
     cursor: pointer;
 }
@@ -94,5 +96,17 @@
     .header__navbar
     {
         display: none;
+    }
+}
+@media (max-width: 540px) {
+    .header__search
+    {
+        position: absolute;
+        top: 100%;
+        z-index: 1000;
+        width: 100%;
+        left: 0;
+        background: var(--mainColor);
+        border-radius: 5;
     }
 }

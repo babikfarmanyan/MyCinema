@@ -104,3 +104,28 @@
         height: 300px;
     }
 }
+@media (max-width: 440px)
+{
+    .slider__item
+    {
+        height: 250px;
+        display: flex;
+        justify-content: center;
+    }
+    .slider__item__content
+    {
+        left: auto;
+    }
+    .slider__item__content h3
+    {
+        font-size: 14px;
+    }
+    .slider__item__content .genres span
+    {
+        font-size: 10px;        
+    }
+    .slider__item__content .seemore-link
+    {
+        font-size: 14px;
+    }
+}

@@ -3,7 +3,7 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <div className='footer'>
+    <footer>
       <div className="footer__navlinks">
             <h3>Navlinks</h3>
             <div className="navlink-box">
@@ -13,18 +13,6 @@ const Footer = () => {
                 <Link to={'/categories/cartons'}>Cartons</Link> 
             </div>
         </div>
-
-        <div className="footer__categories">
-            <h3>Categories</h3>
-            <div className="category-box">
-                <Link to={'/categories/comedy'}>Comedy</Link>
-                <Link to={'/categories/drama'}>Drama</Link>
-                <Link to={'/categories/action'}>Action</Link>
-                <Link to={'/categories/vestern'}>Western</Link>
-                <Link to={'/categories/detective'}>Detective</Link>
-            </div>
-        </div>
-
         <div className="footer__contact">
             <h3>Contact Us</h3>
             <div className="contact-box">
@@ -40,7 +28,7 @@ const Footer = () => {
             </div>
         </div>
 
-    </div>
+    </footer>
   )
 }
 

@@ -56,3 +56,10 @@
         display: none;
     }
 }
+@media (max-width: 400px)
+{
+    .category__item:nth-child(5)
+    {
+        display: none;
+    }
+}
