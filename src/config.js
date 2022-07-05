@@ -37,8 +37,11 @@ const getW500Img = (imgUrl) => {
     return w500IMG_URL + imgUrl;    
 }
 
-const getDetailById = async (id) => {
-    const response = await fetch(`${API_URL}/movie/338953(${id}casts?api_key=${API_KEY}`);
+const getDetailById = async (id,catName) => {
+    let response;
+   (catName === 'movies') ?  response = await fetch(`${API_URL}/movie/${id}casts?api_key=${API_KEY}`)
+    : response = await fetch(`${API_URL}/tv/${id}casts?api_key=${API_KEY}`)
+   ;
     return response.json();
 
 }   

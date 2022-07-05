@@ -1,3 +1,38 @@
-h2{
-    color:red;
+.detail{
+}
+.detail .backdrop_path{
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.2;
+}
+.detail .content{
+    position: absolute;
+    left: 220px;
+    top: 150px;
+    display: flex;
+}
+
+
+.detail .content .content-text{
+    position: relative;
+    width: 600px;
+    height: 600px;
+
+}
+
+.detail .content .poster_path{
+    position: relative;
+    width: 300px;
+    height: 450px;
+    margin: 0 100px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px 1px rgb(74, 74, 74);
+}
+
+.detail .content .content-text h2{
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--white);
+   
 }

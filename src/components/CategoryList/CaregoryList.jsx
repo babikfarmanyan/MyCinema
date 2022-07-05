@@ -23,7 +23,7 @@ const CaregoryList = ({catName}) => {
       <div className='category__list'>
         {
           watchData.map(watchItem => (
-            <CategoryItem key={watchItem.id} watchItem={watchItem} genres={genres} />
+            <CategoryItem key={watchItem.id} watchItem={watchItem} genres={genres} catName={catName} />
           ))
         }
       <Link className='seemore' to={`/categories/${catName}`}>SEE MORE</Link>
