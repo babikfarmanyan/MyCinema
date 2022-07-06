@@ -23,7 +23,7 @@ const getTopRated = async(catName, page) => {
     return response.json();
 }
 
-const getGanres = async(catName) => {
+const getGenres = async(catName) => {
     let response;
 
     if (catName === 'movies') {
@@ -43,4 +43,16 @@ const getW500Img = (imgUrl) => {
     return w500IMG_URL + imgUrl;
 }
 
-export {getMostPopular, getOriginalImg, getW500Img, getTopRated, getGanres};
+const getMoviesByGenre = async(genre, startYear, endYear, page, name) => {
+    let response;
+
+    if (name === 'movies') {
+        response = await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&primary_release_date.gte=${startYear}&primary_release_date.lte=${endYear}&with_genres=14&page=${page}`);
+    }else if (name === 'serials') {
+        response = await fetch()
+    }
+
+    return response.json();
+}
+
+export {getMostPopular, getOriginalImg, getW500Img, getTopRated, getGenres, getMoviesByGenre};

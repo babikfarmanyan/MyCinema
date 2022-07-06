@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { NavLink as Link } from "react-router-dom"
-import { getMostPopular, getGanres, getTopRated } from '../../config';
+import { getMostPopular, getGenres, getTopRated } from '../../config';
 
 import CategoryItem from '../CategoryItem/CategoryItem';
 
@@ -14,7 +14,7 @@ const CaregoryList = ({catName, topRated}) => {
 
   useEffect(() => {
     topRated ? getTopRated(catName).then(data => setWatchData(data.results.slice(0, 6))): getMostPopular(catName).then(data => setWatchData(data.results.slice(0, 5)));
-    getGanres(catName).then(genres => setGenres(genres.genres));
+    getGenres(catName).then(genres => setGenres(genres.genres));
   }, [])
 
   return (
