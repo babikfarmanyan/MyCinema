@@ -2,7 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Carousel } from 'antd';
 import { useState, useEffect } from 'react';
-import {getMostPopular, getGanres} from '../../config';
+import {getMostPopular, getGenres} from '../../config';
 
 import './Slider.css';
 import SliderItem from '../SliderItem/SliderItem';
@@ -14,7 +14,7 @@ const Slider = () => {
 
   useEffect(() => {
     getMostPopular('movies').then(data => setPopularMovies(data.results.slice(0, 10)));
-    getGanres('movies').then(genres => setGenres(genres.genres));
+    getGenres('movies').then(genres => setGenres(genres.genres));
   }, [])
 
   return (
