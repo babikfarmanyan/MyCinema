@@ -40,10 +40,11 @@
 .search__item
 {
     margin-top: 30px;
-    width: 800px;
+    width: 100%;
     display: flex;
     padding: 5px;
     border-radius: 5px;
+    width: 800px;
 }
 .search__item:hover
 {
@@ -56,7 +57,7 @@
 .search__list
 {
     height: 60vh;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
     margin-right: calc(-1 * (100vw - 100%));
 }
@@ -84,5 +85,28 @@
     {
         padding-left: 20px;
         padding-right: 20px;
+    }
+}
+@media (max-width: 440px) {
+    .search-box input
+    {
+        padding: 5px;
+        font-size: 18px;
+    }
+    .search-box
+    {
+        width: 300px;
+    }
+    .search__item
+    {
+        width: 300px;
+    }
+    .search__list
+    {
+        width: 100%;
+    }
+    .search__item img
+    {
+        display: none;
     }
 }
