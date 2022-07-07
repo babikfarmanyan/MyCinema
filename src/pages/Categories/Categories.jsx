@@ -23,10 +23,10 @@ const Categories = () => {
   }, [])
 
   useEffect(() => {
-    console.log(fetchGenres);
-    for (let genre of fetchGenres) {
-      getMoviesByGenre(genre, startYear, endYear, page, name).then(data => console.log(data))
-    }
+    // console.log(fetchGenres);
+    // for (let genre of fetchGenres) {
+    //   getMoviesByGenre(genre, startYear, endYear, page, name).then(data => console.log(data))
+    // }
   }, [fetchGenres, startYear, endYear, page])
 
   return (

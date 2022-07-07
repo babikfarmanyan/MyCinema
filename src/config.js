@@ -43,6 +43,18 @@ const getW500Img = (imgUrl) => {
     return w500IMG_URL + imgUrl;
 }
 
+const searchMovie = async(query) => {
+    const response = await fetch(`${API_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=true`);
+
+    return response.json();
+}
+
+const searchSerial = async(query) => {
+    const response = await fetch(`${API_URL}/search/tv?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=true`);
+
+    return response.json();
+}
+
 const getMoviesByGenre = async(genre, startYear, endYear, page, name) => {
     let response;
 
@@ -55,4 +67,4 @@ const getMoviesByGenre = async(genre, startYear, endYear, page, name) => {
     return response.json();
 }
 
-export {getMostPopular, getOriginalImg, getW500Img, getTopRated, getGenres, getMoviesByGenre};
+export {getMostPopular, getOriginalImg, getW500Img, getTopRated, getGenres, getMoviesByGenre, searchSerial, searchMovie};

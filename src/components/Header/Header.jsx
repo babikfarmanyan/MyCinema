@@ -2,11 +2,13 @@ import { NavLink as Link } from "react-router-dom";
 import {useState} from 'react';
 
 import MobileMenu from "../MobileMenu/MobileMenu";
+import Search from "../Search";
 import './Header.css';
 
 const Header = () => {
 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showSearch, setShowSearch] = useState(false)
 
   return (
     <div className="header">
@@ -24,9 +26,10 @@ const Header = () => {
           <Link to={'/categories/cartoons'}>Cartoons</Link>
       </div>
 
-      <input type="search" className="header__search" placeholder="Search..."/>
+      {showSearch && <Search showSearch={showSearch} setShowSearch={setShowSearch} />}
 
       <div className="header__icon">
+        <i className="fas fa-search" onClick={() => setShowSearch(!showSearch)}></i>
         <i className="fa-regular fa-heart"></i>
         <i className="fa-regular fa-user"></i>
       </div>
