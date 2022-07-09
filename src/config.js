@@ -1,11 +1,17 @@
 import { API_KEY, API_URL, IMG_URL, w500IMG_URL } from "./api";
 
-const getMostPopularMovies = async() => {
-    const response = await fetch(API_URL + '/movie/popular?api_key=' + API_KEY + '&language=en-US&page=1');
+const getMostPopular = async(catName) => {
+    let response;
+
+    if (catName === 'movies') {
+        response = await fetch(API_URL + '/movie/popular?api_key=' + API_KEY + '&language=en-US&page=1');
+    }else if (catName === 'serials') {
+        response = await fetch(`${API_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=1`);
+    }
     return response.json();
 };
 
-const getTopRated = async(catName) => {
+const getTopRated = async(catName, page) => {
     let response;
 
     if (catName === 'movies') {
@@ -45,5 +51,11 @@ const getDetailById = async (id,catName) => {
     return response.json();
 
 }   
+
+const getActorByMovieId = async (id) => {
+    let response = await fetch(`${API_URL}/movie/${id}/casts?api_key=${API_KEY}`)
+    return response.json();
+
+}   
  
-export {getMostPopularMovies, getOriginalImg, getW500Img, getTopRated, getGanres, getDetailById};
+export {getMostPopular, getOriginalImg, getW500Img, getTopRated, getGanres, getDetailById,getActorByMovieId};

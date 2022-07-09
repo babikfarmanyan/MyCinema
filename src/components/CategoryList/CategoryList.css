@@ -50,3 +50,23 @@
     transform: scale(1.03);
     opacity: 1;
 }
+
+@media (max-width: 570px)
+{
+    .category
+    {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .category__list
+    {
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .seemore
+    {
+        display: none;
+    }
+}
