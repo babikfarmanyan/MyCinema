@@ -38,7 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--darkGray);
+    background: #1f1b2e;
     border-radius: 10px;
     color: var(--white)!important;
     font-size: 20px;
