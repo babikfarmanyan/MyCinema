@@ -10,7 +10,7 @@
     display: inline;
     text-transform: capitalize;
 }
-.category__title::after
+.category__title.link::after
 {
     content: '';
     position: absolute;

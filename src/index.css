@@ -7,10 +7,11 @@
 }
 :root
 {
-    --mainColor: #000;
+    --mainColor: #100e19;
     --white: #fff;
     --darkGray: #222;
-    --red: rgb(223, 21, 48);
+    /* --red: rgb(223, 21, 48); */
+    --red: #ea003d;
 }
 #root
 {

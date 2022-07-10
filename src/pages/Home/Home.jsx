@@ -6,8 +6,10 @@ const Home = () => {
     return (
         <>
             <Slider />
+            <CategoryList catName={'movies'} topRated={true} />
             <CategoryList catName={'movies'} />
             <About about={'about'} />
+            <CategoryList catName={'serials'} topRated={true} />
             <CategoryList catName={'serials'} />
         </>
     )

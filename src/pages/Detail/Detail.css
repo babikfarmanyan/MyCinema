@@ -20,7 +20,7 @@
 
 .detail .content .content-text{
     margin-left: 50px ;
-    width: 450px;
+    width: 650px;
 }
 
 .detail .content .poster_path{
@@ -108,8 +108,24 @@
 
 
 .actors .imgActor{
-    width: 120px;
-    height: 130px;
+    width: 125px;
+    height: 140px;
     border-radius: 50%;
     opacity: .7;
 }
+
+.videosList{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px 0;
+    flex-wrap: wrap;
+}
+
+.videosList iframe{
+    width: 580px;
+    height: 400px;
+    border: none;
+    margin: 10px;
+}
+

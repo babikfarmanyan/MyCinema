@@ -2,6 +2,7 @@ import { NavLink as Link } from "react-router-dom";
 import {useState} from 'react';
 
 import MobileMenu from "../MobileMenu/MobileMenu";
+import Search from "../Search";
 import './Header.css';
 import LogIn from "../LogIn/LogIn"; 
 
@@ -9,6 +10,7 @@ const Header = () => {
 
   const [showLogin,setShowLogin]=useState(false); 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showSearch, setShowSearch] = useState(false)
 
   return (
     
@@ -25,12 +27,13 @@ const Header = () => {
           <Link to={'/'}>Home</Link>
           <Link to={'/categories/movies'}>Movies</Link>
           <Link to={'/categories/serials'}>Serials</Link>
-          <Link to={'/categories/cartoons'}>Cartoons</Link>
+          <Link to={'/about'}>About</Link>
       </div>
 
-      <input type="search" className="header__search" placeholder="Search..."/>
+      {showSearch && <Search showSearch={showSearch} setShowSearch={setShowSearch} />}
 
       <div className="header__icon">
+        <i className="fas fa-search" onClick={() => setShowSearch(!showSearch)}></i>
         <i className="fa-regular fa-heart"></i>
         <i className="fa-regular fa-user" onClick={()=>setShowLogin(true)}></i>
       </div>
