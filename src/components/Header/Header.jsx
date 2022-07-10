@@ -35,7 +35,7 @@ const Header = () => {
       <div className="header__icon">
         <i className="fas fa-search" onClick={() => setShowSearch(!showSearch)}></i>
         <i className="fa-regular fa-heart"></i>
-        <i className="fa-regular fa-user" onClick={()=>setShowLogin(true)}></i>
+        <i className="fa-regular fa-user" /* onClick={()=>setShowLogin(true)} */></i>
       </div>
       {showLogin && <LogIn setShowLogin={setShowLogin}/>}
     </div>
