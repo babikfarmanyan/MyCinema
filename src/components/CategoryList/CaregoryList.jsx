@@ -1,32 +1,36 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { NavLink as Link } from "react-router-dom"
-import { getMostPopular, getGenres, getTopRated } from '../../config';
+import { getMostPopular, getGenres, getTopRated, getSimilar } from '../../config';
 
 import CategoryItem from '../CategoryItem/CategoryItem';
 
 import './CategoryList.css'
 
-const CaregoryList = ({catName, topRated}) => {
+const CaregoryList = ({catName, topRated , similar ,id}) => {
 
   const [watchData, setWatchData] = useState([]);
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    topRated ? getTopRated(catName).then(data => setWatchData(data.results.slice(0, 6))): getMostPopular(catName).then(data => setWatchData(data.results.slice(0, 5)));
+   if (topRated) {getTopRated(catName).then(data => setWatchData(data.results.slice(0, 6))) } 
+    else if(similar) {getSimilar(id,similar).then(data => setWatchData(data.results.slice(0, 6)));}
+     else{ getMostPopular(catName).then(data => setWatchData(data.results.slice(0, 5)))}
+
     getGenres(catName).then(genres => setGenres(genres.genres));
   }, [])
 
   return (
+
     <section className="category">
-      {!topRated ? <Link className='category__title link' to={`/categories/${catName}`}>{catName} by genre</Link>: <h2 className='category__title'>Top rated {catName}</h2>}
+     { similar ? "" :!topRated ? <Link className='category__title link' to={`/categories/${catName}`}>{catName} by genre</Link> :  <h2 className='category__title'>Top rated {catName}</h2> }
       <div className='category__list'>
         {
           watchData.map(watchItem => (
-            <CategoryItem key={watchItem.id} watchItem={watchItem} genres={genres} />
+            <CategoryItem key={watchItem.id} watchItem={watchItem} genres={genres} catName={catName} />
           ))
         }
-      {!topRated && <Link className='seemore' to={`/categories/${catName}`}>SEE MORE</Link>}
+      {!topRated &&  !similar && <Link className='seemore' to={`/categories/${catName}`}>SEE MORE</Link>}
       </div>
     </section>
   )

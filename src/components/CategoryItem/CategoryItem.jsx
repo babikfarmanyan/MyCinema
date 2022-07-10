@@ -4,13 +4,13 @@ import { NavLink as Link } from "react-router-dom"
 
 import './CategoryItem.css'
 
-const CategoryItem = ({watchItem, genres}) => {
+const CategoryItem = ({watchItem, genres,catName}) => {
 
   const originalName = 'name' in watchItem ? watchItem.name: watchItem.title;
   const realiseDate = 'release_date' in watchItem ? watchItem.release_date.slice(0, 4): watchItem.first_air_date.slice(0, 4);
 
   return (
-    <Link className='category__item' to={`/watch/${watchItem.id}`}>
+    <Link className='category__item' to={`/${catName}/${watchItem.id}`}>
       <div className="category__item__img">
         <img src={getW500Img(watchItem.poster_path)} alt="" />
       </div>

@@ -1,5 +1,6 @@
 import { NavLink as Link } from "react-router-dom";
 import './Footer.css'
+import About from './../About/About';
 
 const Footer = () => {
   return (
@@ -10,7 +11,7 @@ const Footer = () => {
                 <Link to={'/'}>Home</Link> 
                 <Link to={'/categories/movies'}>Movies</Link>
                 <Link to={'/categories/serials'}>Serials</Link>
-                <Link to={'/categories/cartons'}>Cartons</Link> 
+                <Link to={'/about'}>About</Link> 
             </div>
         </div>
         <div className="footer__contact">

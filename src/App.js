@@ -8,7 +8,6 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import Categories from './pages/Categories/Categories';
 import Detail from './pages/Detail/Detail';
-import Registration from './pages/Registration/Registration';
 
 function App() {
   return (
@@ -18,8 +17,7 @@ function App() {
           <Routes>
               <Route path='/' element={<Home />}/>
               <Route path='/categories/:name' element={<Categories />}/>
-              <Route path='/watch/:id' element={<Detail />}></Route>
-              <Route path='/registration' element={<Registration/>}></Route>
+              <Route path='/:catName/:id' element={<Detail />}></Route>
           </Routes>
         <Footer/>
       </Router>

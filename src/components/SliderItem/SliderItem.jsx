@@ -21,7 +21,7 @@ const SliderItem = ({movie, genres}) => {
                 })
               }
             </div>
-            <Link to={`/watch/${movie.id}`} className='seemore-link'>see more</Link>
+            <Link to={`/movies/${movie.id}`} className='seemore-link'>see more</Link>
         </div>
     </div>
   )
