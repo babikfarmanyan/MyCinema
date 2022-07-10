@@ -4,9 +4,9 @@ const getMostPopular = async(catName, page = 1, startYear = 1850, endYear = 2022
     let response;
 
     if (catName === 'movies') {
-        response = await fetch(`${API_URL}/movie/popular?api_key=${API_KEY}&primary_release_date.gte=${startYear}&primary_release_date.lte=${endYear}&language=en-US&page=${page}`);
+        response = await fetch(`${API_URL}/movie/popular?api_key=${API_KEY}&primary_release_date.gte=${startYear + 1}&primary_release_date.lte=${endYear + 1}&language=en-US&page=${page}`);
     }else if (catName === 'serials') {
-        response = await fetch(`${API_URL}/tv/popular?api_key=${API_KEY}&first_air_date.gte=${startYear}&first_air_date.lte=${endYear}&language=en-US&page=${page}`);
+        response = await fetch(`${API_URL}/tv/popular?api_key=${API_KEY}&first_air_date.gte=${startYear + 1}&first_air_date.lte=${endYear + 1}&language=en-US&page=${page}`);
     }
     return response.json();
 };
