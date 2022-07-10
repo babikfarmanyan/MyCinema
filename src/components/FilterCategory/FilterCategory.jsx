@@ -1,5 +1,5 @@
 import React from 'react';
-import 'antd/dist/antd.css';
+import './FilterCategory.css';
 import { Select } from 'antd';
 
 // const { Option } = Select;
@@ -12,18 +12,15 @@ import { Select } from 'antd';
 const FilterCategory = ({genres, setFetchGenres}) => {
 
   const { Option } = Select;
-  const children = [];
 
   genres = genres.map(genre => (
     <Option key={genre.id}>{genre.name}</Option>
   ))
 
   return (
-    <Select
+    <Select className='category-filter'
     mode="tags"
-    style={{
-      width: '200px',
-    }}
+    placeholder='Select genre'
     onChange={(event) => setFetchGenres(event)}
     tokenSeparators={[',']}
   >
