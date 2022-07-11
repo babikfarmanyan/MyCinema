@@ -9,21 +9,20 @@ import Actors from '../../components/Actors/Actors';
 const Detail = () => {
   const [watchDetail, setWatchData] = useState([]);
   const [videos,setVideos] = useState([]);
-  const [watchActor, setWatchActor] = useState([])
+  const [watchActor, setWatchActor] = useState([]);
   
   const { id, catName } = useParams('');
 
   useEffect(() => {
     window.scrollTo(0, 0)
     getDetailById(id, catName).then(data => {
-      setWatchData(data); 
+      setWatchData(data)
     })
     getVideoById(id,catName).then(data=>{
       setVideos(data.results ? data.results.slice(0,4) : [])
     })
     getActorByMovieId(id).then(data=>{
-      setWatchActor(data.cast ? data.cast.slice(0, 6) : [] );
-
+      setWatchActor(data.cast ? data.cast.slice(0, 6) : [] )
     })
   }, [id])
 
