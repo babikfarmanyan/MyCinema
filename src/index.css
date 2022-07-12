@@ -13,11 +13,24 @@
     /* --red: rgb(223, 21, 48); */
     --red: #ea003d;
 }
-#root
+body
 {
+    background: var(--mainColor)!important;
     width: 100%;
     min-height: 100vh;
-    background: var(--mainColor);
     color: var(--white);
     font-family: 'Poppins', sans-serif;
+}
+#root
+{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+@media (max-width: 1200px)
+{
+    #root
+    {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }

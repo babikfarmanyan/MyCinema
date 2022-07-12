@@ -11,7 +11,7 @@ import Detail from './pages/Detail/Detail';
 
 function App() {
   return (
-    <section className='App'>
+    <>
       <Router>
         <Header/>
           <Routes>
@@ -21,7 +21,7 @@ function App() {
           </Routes>
         <Footer/>
       </Router>
-    </section>
+    </>
   );
 }
 
