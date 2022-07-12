@@ -13,7 +13,7 @@ const Categories = () => {
 
   const {name} = useParams('');
 
-  const [startYear, setStartYear] = useState(1800);
+  const [startYear, setStartYear] = useState(1900);
   const [endYear, setEndYear] = useState(2022);
   const [genres, setGenres] = useState([]);
   const [fetchGenres, setFetchGenres] = useState([]);
@@ -30,29 +30,15 @@ const Categories = () => {
     if (fetchGenres.length === 0) {
       getMostPopular(name, page, startYear, endYear).then(data => setWatchItems(data.results))
     }else {
+
       if (id !== undefined) {
         clearTimeout(id);
       }
   
       setId(setTimeout(() => {
-  
-        setWatchItems([]);
-  
-        const requests = [];
-  
-        for (let genre of fetchGenres) {
-          requests.push(getMoviesByGenre(genre, startYear, endYear, page, name).then(data => data.results));
-        }
-  
-        Promise.all(requests).then(data => {
-          const confData = [];
-  
-          for (let item of data) {
-            confData.push(...item);
-          }
-          return confData;
-        }).then(confData => setWatchItems(confData));
-  
+        getMoviesByGenre(fetchGenres.join('%2C'), startYear, endYear, page, name).then(data => {
+          setWatchItems(data.results.filter(item => item.poster_path !== null));
+        });
       }, 1000));
     }
 
