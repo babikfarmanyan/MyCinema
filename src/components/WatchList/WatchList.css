@@ -20,7 +20,7 @@
 }
 .watch-list__item:hover img
 {
-    filter: blur(1px);
+    /* filter: blur(1px); */
     transform: scale(1.1);
 }
 .watch-list__item img

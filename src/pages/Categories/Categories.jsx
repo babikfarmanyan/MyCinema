@@ -39,7 +39,7 @@ const Categories = () => {
         getMoviesByGenre(fetchGenres.join('%2C'), startYear, endYear, page, name).then(data => {
           setWatchItems(data.results.filter(item => item.poster_path !== null));
         });
-      }, 1000));
+      }, 800));
     }
 
   }, [fetchGenres, startYear, endYear, name])
