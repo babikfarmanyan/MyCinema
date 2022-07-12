@@ -7,7 +7,7 @@ const dateNow = date.getFullYear();
 
 const optionArray = [];
 
-for (let i = dateNow; i >= 1880; i--) {
+for (let i = dateNow; i >= 1900; i--) {
     optionArray.push(
         <Option key={i} value={i}>{i}</Option>
     )
@@ -34,8 +34,8 @@ const FilterDate = ({setStartYear, setEndYear}) => {
       <Select
       labelInValue
       defaultValue={{
-        value: '1880',
-        label: '1880',
+        value: 'first date',
+        label: 'first date',
       }}
       style={{
         width: 120,
