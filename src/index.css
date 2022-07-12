@@ -16,10 +16,11 @@
 body
 {
     background: var(--mainColor)!important;
-    width: 100%;
-    min-height: 100vh;
-    color: var(--white);
-    font-family: 'Poppins', sans-serif;
+    width: 100%!important;
+    min-height: 100vh!important;
+    color: var(--white)!important;
+    font-family: 'Poppins', sans-serif!important;
+    position: relative!important;
 }
 #root
 {
