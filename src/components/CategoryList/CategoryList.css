@@ -62,11 +62,6 @@
     .category__list
     {
         justify-content: center;
-        gap: 30px;
-    }
-
-    .seemore
-    {
-        display: none;
+        gap: 10px;
     }
 }
