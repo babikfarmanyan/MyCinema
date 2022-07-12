@@ -1,4 +1,3 @@
-import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 // Components
@@ -11,7 +10,7 @@ import Detail from './pages/Detail/Detail';
 
 function App() {
   return (
-    <section className='App'>
+    <>
       <Router>
         <Header/>
           <Routes>
@@ -21,7 +20,7 @@ function App() {
           </Routes>
         <Footer/>
       </Router>
-    </section>
+    </>
   );
 }
 

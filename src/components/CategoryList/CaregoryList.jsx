@@ -24,13 +24,13 @@ const CaregoryList = ({catName, topRated , similar ,id}) => {
 
     <section className="category">
      { similar ? "" :!topRated ? <Link className='category__title link' to={`/categories/${catName}`}>{catName} by genre</Link> :  <h2 className='category__title'>Top rated {catName}</h2> }
-      <div className='category__list'>
+      <div className="category__list">
         {
           watchData.map(watchItem => (
-            <CategoryItem key={watchItem.id} watchItem={watchItem} genres={genres} catName={catName} />
+            <CategoryItem key={watchItem.id} watchItem={watchItem} genres={genres} catName={catName} topRated={topRated}/>
           ))
         }
-      {!topRated &&  !similar && <Link className='seemore' to={`/categories/${catName}`}>SEE MORE</Link>}
+      {!topRated &&  !similar && <Link className='category__item seemore' to={`/categories/${catName}`}>SEE MORE</Link>}
       </div>
     </section>
   )

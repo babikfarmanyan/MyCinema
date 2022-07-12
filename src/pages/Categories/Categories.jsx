@@ -23,7 +23,7 @@ const Categories = () => {
 
   useEffect(() => {
     getGenres(name).then(data => setGenres(data.genres));
-  }, [])
+  }, [name])
 
   useEffect(() => {
     setPage(1);
@@ -56,7 +56,7 @@ const Categories = () => {
       }, 1000));
     }
 
-  }, [fetchGenres, startYear, endYear])
+  }, [fetchGenres, startYear, endYear, name])
 
   return (
     <section className='categories'>
