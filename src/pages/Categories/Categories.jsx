@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Pagination } from 'antd';
 
 import {getGenres, getMoviesByGenre, getMostPopular} from '../../config'
 
@@ -50,6 +51,7 @@ const Categories = () => {
       <FilterCategory genres={genres} setFetchGenres={setFetchGenres} />
       <FilterDate setStartYear={setStartYear} setEndYear={setEndYear} />
       <WatchList watchItems={watchItems} name={name} genres={genres}/>
+      <Pagination defaultCurrent={1} total={50} />
     </section>
   )
 }

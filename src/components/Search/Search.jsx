@@ -9,7 +9,7 @@ const Search = ({showSearch, setShowSearch}) => {
     const [value, setValue] = useState('');
     const [watchItems, setWatchItems] = useState([]);
     const [genres, setGenres] = useState([]);
-    let id;
+    const [id, setId] = useState(undefined);
 
     useEffect(() => {
         Promise.all(
@@ -25,9 +25,10 @@ const Search = ({showSearch, setShowSearch}) => {
     useEffect(() => {
         if (id !== undefined) {
             clearInterval(id);
-        }else {
-            if (value !== '') {
-                id = setTimeout(() => {
+        }
+        if (value !== '') {
+            setId(
+                setTimeout(() => {
                     Promise.all(
                         [
                             searchMovie(value),
@@ -36,17 +37,16 @@ const Search = ({showSearch, setShowSearch}) => {
                     ).then(response => {
                         const confData = [];
         
-                        response.forEach(data => {
+                        response.map(data => {
                             confData.push(...data.results.slice(0, 5));
                         })
-        
+
                         return confData.filter(item => item.poster_path !== null)
                     }).then(confData => {
                         setWatchItems(confData);
-                        id = undefined;
                     });
-                }, 1500)
-            }
+                }, 1000)
+            )
         }
     }, [value])
 
