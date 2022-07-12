@@ -1,9 +1,9 @@
 import React from 'react';
-import './About.css';
+import './ShowAbout.css';
 import { NavLink as Link } from "react-router-dom";
 
 
-const About = () => {
+const ShowAbout = () => {
   return (
     <div className='about'>
           <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero facilis beatae alias totam reprehenderit qui dicta hic natus ad similique?</h3>
@@ -17,4 +17,4 @@ const About = () => {
   )
 }
 
-export default About
+export default ShowAbout
