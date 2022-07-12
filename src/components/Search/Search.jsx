@@ -9,6 +9,7 @@ const Search = ({showSearch, setShowSearch}) => {
     const [value, setValue] = useState('');
     const [watchItems, setWatchItems] = useState([]);
     const [genres, setGenres] = useState([]);
+    let id;
 
     useEffect(() => {
         Promise.all(
@@ -22,21 +23,30 @@ const Search = ({showSearch, setShowSearch}) => {
     }, [])
 
     useEffect(() => {
-        if (value !== '') {
-            Promise.all(
-                [
-                    searchMovie(value),
-                    searchSerial(value)
-                ]
-            ).then(response => {
-                const confData = [];
-
-                response.forEach(data => {
-                    confData.push(...data.results);
-                })
-
-                return confData.filter(item => item.poster_path !== null)
-            }).then(confData => setWatchItems(confData));
+        if (id !== undefined) {
+            clearInterval(id);
+        }else {
+            if (value !== '') {
+                id = setTimeout(() => {
+                    Promise.all(
+                        [
+                            searchMovie(value),
+                            searchSerial(value)
+                        ]
+                    ).then(response => {
+                        const confData = [];
+        
+                        response.forEach(data => {
+                            confData.push(...data.results.slice(0, 5));
+                        })
+        
+                        return confData.filter(item => item.poster_path !== null)
+                    }).then(confData => {
+                        setWatchItems(confData);
+                        id = undefined;
+                    });
+                }, 1500)
+            }
         }
     }, [value])
 
@@ -46,7 +56,7 @@ const Search = ({showSearch, setShowSearch}) => {
         <div className="search-box">
             <h1>Search</h1>
             <input type="search" value={value} onChange={(event) => setValue(event.target.value)} style={{display: showSearch ? 'initial': 'none'}} className="header__search" placeholder="Search..."/>
-
+            
             <div className="search__list">
                 {
                     watchItems.length === 0 && value !== '' ? 'Nothing found :(': watchItems.map(watchItem => (
