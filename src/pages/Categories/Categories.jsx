@@ -23,13 +23,22 @@ const Categories = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [id, setId] = useState(undefined);
 
+  let watchListMemory = JSON.parse(localStorage.getItem('watchListMemory'));
+
   useEffect(() => {
     getGenres(name).then(data => setGenres(data.genres));
-    setPage(1);
+    if (watchListMemory) {
+      setFetchGenres(watchListMemory[0].fetchGenres);
+      setPage(watchListMemory[0].page)
+    }else {
+      setPage(1)
+    };
   }, [name])
 
   useEffect(() => {
-    setPage(1);
+    if (!watchItems) {
+      setPage(1);
+    }
     if (fetchGenres.length === 0) {
       getMostPopular(name, page, startYear, endYear).then(data => {
         setTotalPages(data.total_pages);
@@ -76,9 +85,9 @@ const Categories = () => {
   return (
     <section className='categories'>
       <h1 className="categories__title">{name} by genre</h1>
-      <FilterCategory genres={genres} setFetchGenres={setFetchGenres} />
+      <FilterCategory genres={genres} setFetchGenres={setFetchGenres} fetchGenres={fetchGenres} />
       <FilterDate setStartYear={setStartYear} setEndYear={setEndYear} />
-      <WatchList watchItems={watchItems} name={name} genres={genres}/>
+      <WatchList watchItems={watchItems} name={name} genres={genres} startYear={startYear} endYear={endYear} fetchGenres={fetchGenres} page={page}/>
       <Pagination className='pagination' defaultCurrent={page} total={totalPages > 500 ? 5000 : totalPages} current={page} onChange={event => setPage(event)} />
     </section>
   )

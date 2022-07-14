@@ -1,6 +1,8 @@
 import React from 'react';
 import './FilterCategory.css';
 import { Select } from 'antd';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 // const { Option } = Select;
 // const children = [];
@@ -9,7 +11,7 @@ import { Select } from 'antd';
 //   children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
 // }
 
-const FilterCategory = ({genres, setFetchGenres}) => {
+const FilterCategory = ({genres, setFetchGenres, fetchGenres}) => {
 
   const { Option } = Select;
 
@@ -23,6 +25,7 @@ const FilterCategory = ({genres, setFetchGenres}) => {
     placeholder='Select genre'
     onChange={(event) => setFetchGenres(event)}
     tokenSeparators={[',']}
+    value={fetchGenres}
   >
     {genres}
   </Select>
