@@ -13,15 +13,17 @@ for (let i = dateNow; i >= 1900; i--) {
     )
 }
 
-const FilterDate = ({setStartYear, setEndYear}) => {
+const FilterDate = ({startYear, setStartYear, endYear, setEndYear, watchListMemory}) => {
   return (
     <>
       <Select
       labelInValue
+      placeholder={'last date'}
       defaultValue={{
         value: `${dateNow}`,
         label: `${dateNow}`,
       }}
+      value={watchListMemory ? endYear: null}
       style={{
         width: 120,
       }}
@@ -33,10 +35,8 @@ const FilterDate = ({setStartYear, setEndYear}) => {
       </Select>
       <Select
       labelInValue
-      defaultValue={{
-        value: 'first date',
-        label: 'first date',
-      }}
+      placeholder='start year'
+      value={watchListMemory ? startYear: null}
       style={{
         width: 120,
       }}
