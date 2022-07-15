@@ -19,6 +19,7 @@ const Categories = () => {
   const [genres, setGenres] = useState([]);
   const [fetchGenres, setFetchGenres] = useState([]);
   const [page, setPage] = useState(1);
+  const [prevPage, setPrevPage] = useState(1);
   const [watchItems, setWatchItems] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [id, setId] = useState(undefined);
@@ -30,22 +31,25 @@ const Categories = () => {
     
     if (watchListMemory) {
       setFetchGenres(watchListMemory[0].fetchGenres);
-      setPage(watchListMemory[0].page);
-      setStartYear(watchListMemory[0].startYear);
-      setEndYear(watchListMemory[0].endYear);
     }
   }, [name])
 
   useEffect(() => {
-    console.log('name');
-    if (!watchListMemory) {
-      setPage(1);
+    if (watchListMemory) {
+      setPage(watchListMemory[0].page);
+      setPrevPage(watchListMemory[0].page);
+    }else {
+      if (page === prevPage) {
+        setPage(1);
+        setPrevPage(page);
+      }
+      else setPrevPage(page);
     }
-
     if (fetchGenres.length === 0) {
       getMostPopular(name, page, startYear, endYear).then(data => {
         setTotalPages(data.total_pages);
         setWatchItems(data.results.filter(item => item.poster_path !== null));
+        localStorage.removeItem('watchListMemory');
       })
     }else {
 
@@ -58,35 +62,10 @@ const Categories = () => {
           setTotalPages(data.total_pages);
           setWatchItems(data.results.filter(item => item.poster_path !== null));
         });
-        if (watchListMemory){
-          localStorage.removeItem('watchListMemory');
-        }
-      }, 800));
+        localStorage.removeItem('watchListMemory');
+      }, 500));
     }
-  }, [fetchGenres, startYear, endYear, name])
-
-
-  useEffect(() => {
-    console.log('page');
-    if (fetchGenres.length === 0) {
-      getMostPopular(name, page, startYear, endYear).then(data => {
-        setTotalPages(data.total_pages);
-        setWatchItems(data.results.filter(item => item.poster_path !== null))
-      })
-    }else {
-
-      if (id !== undefined) {
-        clearTimeout(id);
-      }
-  
-      setId(setTimeout(() => {
-        getMoviesByGenre(fetchGenres.join('%2C'), startYear, endYear, page, name).then(data => {
-          setTotalPages(data.total_pages);
-          setWatchItems(data.results.filter(item => item.poster_path !== null));
-        });
-      }, 800));
-    }
-  }, [page])
+  }, [fetchGenres, startYear, endYear, name, page])
   return (
     <section className='categories'>
       <h1 className="categories__title">{name} by genre</h1>

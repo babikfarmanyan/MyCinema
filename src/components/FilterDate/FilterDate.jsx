@@ -18,16 +18,12 @@ const FilterDate = ({startYear, setStartYear, endYear, setEndYear, watchListMemo
     <>
       <Select
       labelInValue
-      placeholder={'last date'}
-      defaultValue={{
-        value: `${dateNow}`,
-        label: `${dateNow}`,
-      }}
-      value={watchListMemory ? endYear: null}
+      placeholder='last date'
+      defaultValue={watchListMemory ? watchListMemory[0].endYear : null}
       style={{
         width: 120,
       }}
-      onChange={(option) => setEndYear(option.value)}
+      onChange={option => setEndYear(option.value)}
     >
       {
           optionArray.map(option => option)        
@@ -36,11 +32,11 @@ const FilterDate = ({startYear, setStartYear, endYear, setEndYear, watchListMemo
       <Select
       labelInValue
       placeholder='start year'
-      value={watchListMemory ? startYear: null}
+      defaultValue={watchListMemory ? watchListMemory[0].startYear : null}
       style={{
         width: 120,
       }}
-      onChange={(option) => setStartYear(option.value)}
+      onChange={option => setStartYear(option.value)}
     >
       {
           optionArray.map(option => option)        
