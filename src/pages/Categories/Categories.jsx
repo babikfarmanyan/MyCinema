@@ -63,7 +63,7 @@ const Categories = () => {
           setWatchItems(data.results.filter(item => item.poster_path !== null));
         });
         localStorage.removeItem('watchListMemory');
-      }, 500));
+      }, 800));
     }
   }, [fetchGenres, startYear, endYear, name, page])
   return (
