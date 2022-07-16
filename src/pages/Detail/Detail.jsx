@@ -40,7 +40,10 @@ const Detail = () => {
         <div className="content-text">
          
             <h2>{catName === 'movies' ? watchDetail.title : watchDetail.name}</h2>
-            <i className="fa-solid fa-heart"></i>
+            <div className="iconLike">
+              <i className="fa-solid fa-heart"></i>
+            </div>
+            
             <div stayle='display: flex'>
             <p> Release date:  &emsp; {watchDetail.release_date}</p>
             <p> Popularity: &emsp;  {watchDetail.popularity}</p> 
@@ -72,7 +75,7 @@ const Detail = () => {
   </div>
 
 
-        <CaregoryList catName={catName} id={id} similar={true} topRated={false}/>
+        <CaregoryList catName={catName} id={id} similar={true} topRated={false}  genreId={watchDetail.genres[0].id}/>
 
 </div>  
 

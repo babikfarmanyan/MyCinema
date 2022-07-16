@@ -1,7 +1,8 @@
 .detail{
     position: relative;
     width: 1200px;
-    height: 600px;
+    height: 590px;
+    box-sizing: border-box;
 }
 .detail .backdrop_path{
     width: 100%;
@@ -38,7 +39,14 @@
     
    
 }
-.detail .content .content-text .fa-heart{
+
+.detail .content .content-text .iconLike {
+
+    color: var(--red);
+
+}
+
+.detail .content .content-text .iconLike .fa-heart{
     font-size: 30px;
     font-weight: 700;
     color: var(--white);
@@ -47,9 +55,12 @@
     left: 300px;
     cursor: pointer;
 }
-.detail .content .content-text .fa-heart:hover{
+
+
+.detail .content .content-text .iconLike .fa-heart:hover{
 
     color: var(--red);
+
 }
 
 .detail .content .content-text p{
@@ -84,15 +95,16 @@
 }
 .actorsList{ 
     display: flex;
-    justify-content: center;
-    align-content: space-between;
+    justify-content: space-between;
+    align-items: center;
     color: red;
+    margin: 10px;
 }
 
 .actors{ 
-    width: 160px;
-    height: 150px;
-    margin: 40px;
+    width: 150px;
+    height: 220px;
+    margin: 25px;
     
 
 }
@@ -101,18 +113,42 @@
     color: var(--white);
     font-size: 15px;
     align-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 
 }
 
+.actors h3{
+    color: lightgray;
+    font-size: 13px;
+    align-content: center;
 
+}
 
 .actors .imgActor{
-    width: 125px;
-    height: 140px;
+    height: 100%;
+    max-width: 100%;
+    border-radius: 48%;
+    opacity: .7;
+    
+}
+
+
+.actors .notImg{
+    width: 145px;
+    height: 220px;
     border-radius: 50%;
     opacity: .7;
+    font-size: 72px;
+    background-color: rgba(74, 74, 74, 0.5);
+    text-align: center;
+    padding-top: 35%;
 }
+
+.actors .notImg span{
+    color: lightgrey;
+    width: 50%;
+}
+
 
 .videosList{
     display: flex;
