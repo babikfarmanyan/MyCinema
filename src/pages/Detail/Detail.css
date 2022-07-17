@@ -42,24 +42,30 @@
 
 .detail .content .content-text .iconLike {
 
-    color: var(--red);
+    color: 0;
 
 }
 
 .detail .content .content-text .iconLike .fa-heart{
     font-size: 30px;
     font-weight: 700;
-    color: var(--white);
     position: absolute;
-    top:  460px;
-    left: 300px;
+    top:  20px;
+    left: 1100px;
     cursor: pointer;
+    padding: 10px;
+    background: rgba(255, 252, 252, 0.5);
+    border-radius: 40%;
+    color: rgba(255, 252, 252, 0.8);
+
 }
 
 
-.detail .content .content-text .iconLike .fa-heart:hover{
+.detail .content .content-text .iconLike :hover{
 
     color: var(--red);
+    background-color: transparent;
+
 
 }
 
@@ -93,61 +99,7 @@
     display: flex
     
 }
-.actorsList{ 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: red;
-    margin: 10px;
-}
 
-.actors{ 
-    width: 150px;
-    height: 220px;
-    margin: 25px;
-    
-
-}
-
-.actors h2{
-    color: var(--white);
-    font-size: 15px;
-    align-content: center;
-    margin-bottom: 5px;
-
-}
-
-.actors h3{
-    color: lightgray;
-    font-size: 13px;
-    align-content: center;
-
-}
-
-.actors .imgActor{
-    height: 100%;
-    max-width: 100%;
-    border-radius: 48%;
-    opacity: .7;
-    
-}
-
-
-.actors .notImg{
-    width: 145px;
-    height: 220px;
-    border-radius: 50%;
-    opacity: .7;
-    font-size: 72px;
-    background-color: rgba(74, 74, 74, 0.5);
-    text-align: center;
-    padding-top: 35%;
-}
-
-.actors .notImg span{
-    color: lightgrey;
-    width: 50%;
-}
 
 
 .videosList{
