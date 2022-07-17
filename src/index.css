@@ -22,6 +22,8 @@ body
     font-family: 'Poppins', sans-serif!important;
     position: relative!important;
 }
+
+
 #root
 {
     max-width: 1200px;

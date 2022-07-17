@@ -14,9 +14,12 @@
 }
 
 .header__logo span {
-    color: var(--red);
+    color: red !important;
     font-size: 25px;
+    display: inline;
 }
+
+
 .header__navbar {
     display: flex;
     gap: 20px;
@@ -28,6 +31,7 @@
     font-weight: 400;
     color: var(--white);
 }
+
 .header__navbar a::before {
     content: '';
     display: block;
@@ -38,10 +42,17 @@
     top: 100%;
     transition: all .5s ease-in;
 }
+
 .header__navbar a:hover
 {
     color: var(--white);
 }
+  
+.active {
+    border-bottom: 3px solid var(--red);
+}
+
+
 .header__navbar a:hover::before {
     width: 100%;
 }
@@ -56,10 +67,12 @@
 {
     cursor: pointer;
 }
+
 .header__icon i:hover {
     font-size: 20px;
     color: var(--red);
 }
+
 .mobile-menu__btn
 {
     background: none;
@@ -67,6 +80,7 @@
     display: none;
     cursor: pointer;
 }
+
 .mobile-menu__btn i
 {
     font-size: 25px;

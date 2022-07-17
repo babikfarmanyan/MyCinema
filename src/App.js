@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-
+import React from 'react';
 // Components
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -8,7 +8,9 @@ import NotFound from './components/NotFound/NotFound';
 import Home from './pages/Home/Home';
 import Categories from './pages/Categories/Categories';
 import Detail from './pages/Detail/Detail';
+import Loading from './components/Loading';
 import About from './pages/About/About';
+
 
 function App() {
   return (
@@ -19,7 +21,7 @@ function App() {
               <Route path='/' element={<Home />}/>
               <Route path='/categories/:name' element={<Categories />}/>
               <Route path='/:catName/:id' element={<Detail />} />
-              <Route path='/about' element={<About />} />
+              <Route path='/about' element={<About />}/>
               <Route path='*' element={<NotFound />} />
           </Routes>
         <Footer/>
