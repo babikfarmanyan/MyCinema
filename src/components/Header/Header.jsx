@@ -1,7 +1,7 @@
 import { NavLink as Link } from "react-router-dom";
 import {useState} from 'react';
 
-import MobileMenu from "../MobileMenu/MobileMenu";
+import MobileMenu from "../MobileMenu";
 import Search from "../Search";
 import './Header.css';
 import LogIn from "../LogIn/LogIn"; 

@@ -1,8 +1,5 @@
-import React from 'react';
 import './FilterCategory.css';
 import { Select } from 'antd';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const FilterCategory = ({genres, setFetchGenres, fetchGenres, setFilterClick}) => {
 

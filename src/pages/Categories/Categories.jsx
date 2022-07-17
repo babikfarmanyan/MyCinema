@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Pagination } from 'antd';
 
-import {getGenres, getMoviesByGenre, getMostPopular} from '../../config'
+import {getGenres, getMoviesByGenre} from '../../config'
 
 import FilterDate from '../../components/FilterDate';
 import FilterCategory from '../../components/FilterCategory';
