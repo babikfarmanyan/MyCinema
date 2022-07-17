@@ -39,3 +39,8 @@
 {
     color: var(--red);
 }
+.filters
+{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,14 @@
+.year-from::before
+{
+    content: 'From :';
+    color: var(--white);
+    opacity: .6;
+    font-size: 13px;
+}
+.year-to::before
+{
+    content: 'To :';
+    color: var(--white);
+    opacity: .6;
+    font-size: 13px;
+}

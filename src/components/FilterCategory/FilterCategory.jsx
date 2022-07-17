@@ -15,7 +15,7 @@ const FilterCategory = ({genres, setFetchGenres, fetchGenres, setFilterClick}) =
   return (
     <Select className='category-filter'
     mode="tags"
-    placeholder='Select genre'
+    placeholder='Most popular'
     onChange={(event) => {
       setFilterClick(true);
       setFetchGenres(event)

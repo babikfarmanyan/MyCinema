@@ -7,6 +7,7 @@ import {getGenres, getMoviesByGenre, getMostPopular} from '../../config'
 import FilterDate from '../../components/FilterDate';
 import FilterCategory from '../../components/FilterCategory';
 import WatchList from '../../components/WatchList/WatchList';
+import Loading from '../../components/Loading';
 
 import './Categories.css';
 
@@ -72,7 +73,7 @@ const Categories = () => {
       <h1 className="categories__title">{name} by genre</h1>
       <FilterCategory genres={genres} setFetchGenres={setFetchGenres} fetchGenres={fetchGenres} setFilterClick={setFilterClick}/>
       <FilterDate startYear={startYear} setStartYear={setStartYear} endYear={endYear} setEndYear={setEndYear} setFilterClick={setFilterClick}/>
-      {loading ? 'Loading' :<WatchList watchItems={watchItems} name={name} genres={genres}/> }
+      {loading ? <Loading />:<WatchList watchItems={watchItems} name={name} genres={genres}/> }
       <Pagination className='pagination' defaultCurrent={page} total={totalPages > 500 ? 5000 : totalPages} current={page} onChange={event => {
         window.scrollTo(0, 0);
         setPage(event)
