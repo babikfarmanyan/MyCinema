@@ -4,14 +4,7 @@ import { Select } from 'antd';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-// const { Option } = Select;
-// const children = [];
-
-// for (let i = 10; i < 36; i++) {
-//   children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
-// }
-
-const FilterCategory = ({genres, setFetchGenres, fetchGenres}) => {
+const FilterCategory = ({genres, setFetchGenres, fetchGenres, setFilterClick}) => {
 
   const { Option } = Select;
 
@@ -23,7 +16,10 @@ const FilterCategory = ({genres, setFetchGenres, fetchGenres}) => {
     <Select className='category-filter'
     mode="tags"
     placeholder='Select genre'
-    onChange={(event) => setFetchGenres(event)}
+    onChange={(event) => {
+      setFilterClick(true);
+      setFetchGenres(event)
+    }}
     tokenSeparators={[',']}
     value={fetchGenres}
   >

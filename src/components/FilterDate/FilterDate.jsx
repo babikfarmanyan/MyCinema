@@ -13,17 +13,20 @@ for (let i = dateNow; i >= 1900; i--) {
     )
 }
 
-const FilterDate = ({startYear, setStartYear, endYear, setEndYear, watchListMemory}) => {
+const FilterDate = ({startYear, setStartYear, endYear, setEndYear, watchListMemory, setFilterClick}) => {
   return (
     <>
       <Select
       labelInValue
-      placeholder='last date'
-      defaultValue={watchListMemory ? watchListMemory[0].endYear : null}
-      style={{
-        width: 120,
+      placeholder='2022'
+      value={{
+        value: endYear,
+        label: endYear
       }}
-      onChange={option => setEndYear(option.value)}
+      onChange={option => {
+        setFilterClick(true);
+        setEndYear(option.value)
+      }}
     >
       {
           optionArray.map(option => option)        
@@ -31,12 +34,14 @@ const FilterDate = ({startYear, setStartYear, endYear, setEndYear, watchListMemo
       </Select>
       <Select
       labelInValue
-      placeholder='start year'
-      defaultValue={watchListMemory ? watchListMemory[0].startYear : null}
-      style={{
-        width: 120,
+      value={{
+        value: startYear,
+        label: startYear
       }}
-      onChange={option => setStartYear(option.value)}
+      onChange={option => {
+        setFilterClick(true);
+        setStartYear(option.value)
+      }}
     >
       {
           optionArray.map(option => option)        

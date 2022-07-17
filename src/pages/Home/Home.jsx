@@ -3,6 +3,7 @@ import CategoryList from '../../components/CategoryList/CaregoryList';
 import About from '../../components/About/About';
 
 const Home = () => {
+    localStorage.removeItem('watchListMemory');
     return (
         <>
             <Slider />

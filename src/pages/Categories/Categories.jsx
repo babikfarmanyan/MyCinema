@@ -19,60 +19,64 @@ const Categories = () => {
   const [genres, setGenres] = useState([]);
   const [fetchGenres, setFetchGenres] = useState([]);
   const [page, setPage] = useState(1);
-  const [prevPage, setPrevPage] = useState(1);
+  const [filterClick, setFilterClick] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [watchItems, setWatchItems] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
-  const [id, setId] = useState(undefined);
 
   let watchListMemory = JSON.parse(localStorage.getItem('watchListMemory'));
 
   useEffect(() => {
     getGenres(name).then(data => setGenres(data.genres));
-    
     if (watchListMemory) {
+      setPage(watchListMemory[0].page);
       setFetchGenres(watchListMemory[0].fetchGenres);
-    }
+      setStartYear(watchListMemory[0].startYear);
+      setEndYear(watchListMemory[0].endYear);
+    }else {
+      setFetchGenres([]);
+      setPage(1);
+      setEndYear(2022);
+      setStartYear(1900);
+    };
   }, [name])
 
   useEffect(() => {
-    if (watchListMemory) {
-      setPage(watchListMemory[0].page);
-      setPrevPage(watchListMemory[0].page);
-    }else {
-      if (page === prevPage) {
-        setPage(1);
-        setPrevPage(page);
-      }
-      else setPrevPage(page);
-    }
-    if (fetchGenres.length === 0) {
-      getMostPopular(name, page, startYear, endYear).then(data => {
-        setTotalPages(data.total_pages);
-        setWatchItems(data.results.filter(item => item.poster_path !== null));
-        localStorage.removeItem('watchListMemory');
-      })
-    }else {
+    if (filterClick) {
+      setFilterClick(false);
+      setPage(1);
+    };
 
-      if (id !== undefined) {
-        clearTimeout(id);
-      }
-  
-      setId(setTimeout(() => {
-        getMoviesByGenre(fetchGenres.join('%2C'), startYear, endYear, page, name).then(data => {
-          setTotalPages(data.total_pages);
-          setWatchItems(data.results.filter(item => item.poster_path !== null));
-        });
-        localStorage.removeItem('watchListMemory');
-      }, 800));
-    }
-  }, [fetchGenres, startYear, endYear, name, page])
+    setLoading(true);
+    getMoviesByGenre(fetchGenres.join('%2C'), startYear, endYear, page, name).then(data => {
+      setTotalPages(data.total_pages);
+      setWatchItems(data.results.filter(item => item.poster_path !== null));
+      setLoading(false);
+      localStorage.setItem('watchListMemory', JSON.stringify(
+        [
+          {
+            startYear: startYear,
+            endYear: endYear,
+            fetchGenres: fetchGenres,
+            page: page
+          }
+        ]
+      ))
+    })
+
+  }, [fetchGenres, page, startYear, endYear])
+
+
   return (
     <section className='categories'>
       <h1 className="categories__title">{name} by genre</h1>
-      <FilterCategory genres={genres} setFetchGenres={setFetchGenres} fetchGenres={fetchGenres} />
-      <FilterDate startYear={startYear} setStartYear={setStartYear} endYear={endYear} setEndYear={setEndYear} watchListMemory={watchListMemory}/>
-      <WatchList watchItems={watchItems} name={name} totalPages={totalPages} genres={genres} startYear={startYear} endYear={endYear} fetchGenres={fetchGenres} page={page}/>
-      <Pagination className='pagination' defaultCurrent={page} total={totalPages > 500 ? 5000 : totalPages} current={page} onChange={event => setPage(event)} />
+      <FilterCategory genres={genres} setFetchGenres={setFetchGenres} fetchGenres={fetchGenres} setFilterClick={setFilterClick}/>
+      <FilterDate startYear={startYear} setStartYear={setStartYear} endYear={endYear} setEndYear={setEndYear} setFilterClick={setFilterClick}/>
+      {loading ? 'Loading' :<WatchList watchItems={watchItems} name={name} genres={genres}/> }
+      <Pagination className='pagination' defaultCurrent={page} total={totalPages > 500 ? 5000 : totalPages} current={page} onChange={event => {
+        window.scrollTo(0, 0);
+        setPage(event)
+      }} />
     </section>
   )
 }

@@ -30,7 +30,7 @@ const CaregoryList = ({catName, topRated , similar ,id}) => {
             <CategoryItem key={watchItem.id} watchItem={watchItem} genres={genres} catName={catName} topRated={topRated}/>
           ))
         }
-      {!topRated &&  !similar && <Link className='category__item seemore' to={`/categories/${catName}` } onClick={() => localStorage.removeItem('watchListMemory')}>SEE MORE</Link>}
+      {!topRated &&  !similar && <Link className='category__item seemore' to={`/categories/${catName}` }>SEE MORE</Link>}
       </div>
     </section>
   )
