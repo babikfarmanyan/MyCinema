@@ -1,6 +1,6 @@
 import { NavLink as Link } from "react-router-dom";
 import './Footer.css'
-import About from './../About/About';
+import About from "../../pages/About/About";
 
 const Footer = () => {
   return (
