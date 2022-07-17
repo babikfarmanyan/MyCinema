@@ -13,6 +13,10 @@
     font-weight: 600;
 }
 
+.header__logo.active {
+    border: none;
+}
+
 .header__logo span {
     color: red !important;
     font-size: 25px;
@@ -43,13 +47,17 @@
     transition: all .5s ease-in;
 }
 
-.header__navbar a:hover
+ .header__navbar a:hover
 {
     color: var(--white);
 }
   
 .active {
-    border-bottom: 3px solid var(--red);
+    border-bottom: 2px solid var(--white);
+    line-height: -1px;
+    transition: all .5s ease-in;
+    /* padding: 0 6px; */
+    /* border-radius: 5px; */
 }
 
 

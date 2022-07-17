@@ -11,11 +11,11 @@
  100% { transform: translate(148px,80px) scale(0); }
 }
 @keyframes ldio-m2hofrso4bo-c {
-   0% { background: #b2a0a2 }
+   0% { background: #716e6e }
   25% { background: #767971 }
-  50% { background: #ddd1c4 }
+  50% { background: #72706e }
   75% { background: #8e7b77 }
- 100% { background: #b2a0a2 }
+ 100% { background: #534f4f }
 }
 .ldio-m2hofrso4bo div {
   position: absolute;
@@ -23,25 +23,25 @@
   height: 40px;
   border-radius: 50%;
   transform: translate(80px,80px) scale(1);
-  background: #b2a0a2;
+  background: #2a2627;
   animation: ldio-m2hofrso4bo 1.282051282051282s infinite cubic-bezier(0,0.5,0.5,1);
 }
 .ldio-m2hofrso4bo div:nth-child(1) {
-  background: #8e7b77;
+  background: #222;
   transform: translate(148px,80px) scale(1);
   animation: ldio-m2hofrso4bo-r 0.3205128205128205s infinite cubic-bezier(0,0.5,0.5,1), ldio-m2hofrso4bo-c 1.282051282051282s infinite step-start;
 }.ldio-m2hofrso4bo div:nth-child(2) {
   animation-delay: -0.3205128205128205s;
-  background: #b2a0a2;
+  background: #333;
 }.ldio-m2hofrso4bo div:nth-child(3) {
   animation-delay: -0.641025641025641s;
-  background: #8e7b77;
+  background: #444;
 }.ldio-m2hofrso4bo div:nth-child(4) {
   animation-delay: -0.9615384615384615s;
-  background: #ddd1c4;
+  background: #555;
 }.ldio-m2hofrso4bo div:nth-child(5) {
   animation-delay: -1.282051282051282s;
-  background: #767971;
+  background: #666;
 }
 .loadingio-spinner-ellipsis-ylqzhx5e5kq {
   /* display: flex !important; */

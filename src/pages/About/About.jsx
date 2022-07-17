@@ -28,7 +28,7 @@ const About = () => {
          
      <div class="our_goal">
       {loading ? <Loading /> : 
-        <img src={img.about_img} alt=""/> }
+        <img src={img.about_img} alt="nkar"/> }
         <p>We’re on a mission to create a global community where everyone can discover, experience, and share all of the entertainment that matters to them.</p>
     </div>
 
