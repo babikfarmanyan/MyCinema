@@ -1,4 +1,4 @@
-import 'antd/dist/antd.css';
+import './FilterDate.css'
 import { Select } from 'antd';
 
 const { Option } = Select;
@@ -13,34 +13,35 @@ for (let i = dateNow; i >= 1900; i--) {
     )
 }
 
-const FilterDate = ({setStartYear, setEndYear}) => {
+const FilterDate = ({startYear, setStartYear, endYear, setEndYear, watchListMemory, setFilterClick}) => {
   return (
     <>
-      <Select
+      <Select className='year-from'
       labelInValue
-      defaultValue={{
-        value: `${dateNow}`,
-        label: `${dateNow}`,
+      value={{
+        value: startYear,
+        label: startYear
       }}
-      style={{
-        width: 120,
+      onChange={option => {
+        setFilterClick(true);
+        setStartYear(option.value)
       }}
-      onChange={(option) => setEndYear(option.value)}
     >
       {
           optionArray.map(option => option)        
       }
       </Select>
-      <Select
+      <Select className='year-to'
       labelInValue
-      defaultValue={{
-        value: 'first date',
-        label: 'first date',
+      placeholder='2022'
+      value={{
+        value: endYear,
+        label: endYear
       }}
-      style={{
-        width: 120,
+      onChange={option => {
+        setFilterClick(true);
+        setEndYear(option.value)
       }}
-      onChange={(option) => setStartYear(option.value)}
     >
       {
           optionArray.map(option => option)        

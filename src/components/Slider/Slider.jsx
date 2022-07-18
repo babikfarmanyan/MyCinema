@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import {getMostPopular, getGenres} from '../../config';
 
 import './Slider.css';
-import SliderItem from '../SliderItem/SliderItem';
+import SliderItem from '../SliderItem';
 
 const Slider = () => {
 

@@ -4,7 +4,7 @@ import {NavLink as Link} from 'react-router-dom';
 const WatchItem = ({item, name, genres}) => {
 
     const originalName = 'name' in item ? item.name: item.title;
-  const realiseDate = 'release_date' in item ? item.release_date.slice(0, 4): item.first_air_date.slice(0, 4);
+    const realiseDate = 'release_date' in item ? item.release_date.slice(0, 4): item.first_air_date.slice(0, 4);
 
   return (
     <Link to={`/${name}/${item.id}`} className='watch-list__item'>

@@ -1,15 +1,7 @@
-import React from 'react';
 import './FilterCategory.css';
 import { Select } from 'antd';
 
-// const { Option } = Select;
-// const children = [];
-
-// for (let i = 10; i < 36; i++) {
-//   children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
-// }
-
-const FilterCategory = ({genres, setFetchGenres}) => {
+const FilterCategory = ({genres, setFetchGenres, fetchGenres, setFilterClick}) => {
 
   const { Option } = Select;
 
@@ -20,9 +12,13 @@ const FilterCategory = ({genres, setFetchGenres}) => {
   return (
     <Select className='category-filter'
     mode="tags"
-    placeholder='Select genre'
-    onChange={(event) => setFetchGenres(event)}
+    placeholder='Most popular'
+    onChange={(event) => {
+      setFilterClick(true);
+      setFetchGenres(event)
+    }}
     tokenSeparators={[',']}
+    value={fetchGenres}
   >
     {genres}
   </Select>

@@ -1,8 +1,9 @@
-import Slider from '../../components/Slider/Slider';
-import CategoryList from '../../components/CategoryList/CaregoryList';
+import Slider from '../../components/Slider';
+import CategoryList from '../../components/CategoryList';
 import ShowAbout from '../../components/ShowAbout';
 
 const Home = () => {
+    localStorage.removeItem('watchListMemory');
     return (
         <>
             <Slider />

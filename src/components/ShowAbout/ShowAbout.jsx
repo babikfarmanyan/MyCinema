@@ -1,4 +1,3 @@
-import React from 'react';
 import './ShowAbout.css';
 import { NavLink as Link } from "react-router-dom";
 
