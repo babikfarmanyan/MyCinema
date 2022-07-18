@@ -34,8 +34,7 @@ const Header = () => {
 
       <div className="header__icon">
         <i className="fas fa-search" onClick={() => setShowSearch(!showSearch)}></i>
-        <i className="fa-regular fa-heart"></i>
-        <i className="fa-regular fa-user" /* onClick={()=>setShowLogin(true)} */></i>
+        <Link to={'/favorites'}><i className="fa-regular fa-heart"></i></Link>
       </div>
       {showLogin && <LogIn setShowLogin={setShowLogin}/>}
     </div>

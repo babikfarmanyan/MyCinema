@@ -10,6 +10,7 @@ const Detail = () => {
   const [watchDetail, setWatchData] = useState([]);
   const [videos,setVideos] = useState([]);
   const [watchActor, setWatchActor] = useState([]);
+  const [favoritesArr , setFavoritesArr]=useState([]);
   
   const { id, catName } = useParams('');
 
@@ -24,7 +25,10 @@ const Detail = () => {
     getActorByMovieId(id).then(data=>{
       setWatchActor(data.cast ? data.cast.slice(0, 6) : [] )
     })
+
   }, [id])
+
+   
 
  
   return (
@@ -40,7 +44,7 @@ const Detail = () => {
         <div className="content-text">
          
             <h2>{catName === 'movies' ? watchDetail.title : watchDetail.name}</h2>
-            <div className="iconLike">
+            <div className="iconLike" onClick={localStorage.setItem("favorites",JSON.stringify(watchDetail.id))}>
               <i className="fa-solid fa-heart"></i>
             </div>
             
