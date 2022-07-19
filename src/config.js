@@ -1,6 +1,6 @@
 import { API_KEY, API_URL, IMG_URL, w500IMG_URL } from "./api";
 
-const getMostPopular = async(catName, page = 1, startYear = 1850, endYear = 2022) => {
+const getMostPopular = async(catName, page = 1, startYear = 1900, endYear = 2022) => {
     let response;
 
     if (catName === 'movies') {
@@ -79,10 +79,14 @@ const getMoviesByGenre = async(genres, startYear, endYear, page, name) => {
     let response;
     // https://api.themoviedb.org/3/discover/movie?api_key=eb749c93366733af278c7f4d6d5c5fa3&language=en-US&page=1&primary_release_date.gte=2008&primary_release_date.lte=2010&with_genres=12%20%2C%2014&
 
-    if (name === 'movies') {
-        response = await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&primary_release_date.gte=${startYear}&primary_release_date.lte=${endYear}&with_genres=${genres}`);
-    }else if (name === 'serials') {
-        response = await fetch(`${API_URL}/discover/tv?api_key=${API_KEY}&language=en-US&first_air_date.gte=${startYear}&first_air_date.lte=${endYear}&page=${page}&with_genres=${genres}`)
+    if (genres.length === 0) {
+        return getMostPopular(name, page, startYear, endYear);
+    }else {
+        if (name === 'movies') {
+            response = await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&primary_release_date.gte=${startYear}&primary_release_date.lte=${endYear}&with_genres=${genres}`);
+        }else if (name === 'serials') {
+            response = await fetch(`${API_URL}/discover/tv?api_key=${API_KEY}&language=en-US&first_air_date.gte=${startYear}&first_air_date.lte=${endYear}&page=${page}&with_genres=${genres}`)
+        }
     }
 
     return response.json();
@@ -97,7 +101,6 @@ const getVideoById = async(id,catName) => {
 const getSimilar = async(id,catName) => {
    
   const response = await fetch(`${API_URL}/${catName === 'movies'? 'movie':'tv'}/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`);
-  console.log(response);
   return response.json();
 }
 

@@ -6,7 +6,7 @@ const WatchList = ({watchItems, name, genres}) => {
     <div className="watch-list">
         {
             watchItems.length === 0 ? 'Nothing found :(': watchItems.map((item, index) => (
-              <WatchItem key={index} item={item} name={name} genres={genres} />
+              <WatchItem key={index} item={item} name={name} genres={genres}/>
           ))
         }
     </div>

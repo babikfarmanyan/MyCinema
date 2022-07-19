@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 import { NavLink as Link } from "react-router-dom"
 import { getMostPopular, getGenres, getTopRated, getSimilar, getSimilarByGenreId } from '../../config';
 
-import CategoryItem from '../CategoryItem/CategoryItem';
+import CategoryItem from '../CategoryItem';
 
 import './CategoryList.css'
 
-const CaregoryList = ({catName, topRated , similar ,id, genreId}) => {
+const CategoryList = ({catName, topRated , similar ,id, genreId}) => {
 
   const [watchData, setWatchData] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -38,10 +38,10 @@ const CaregoryList = ({catName, topRated , similar ,id, genreId}) => {
             <CategoryItem key={watchItem.id} watchItem={watchItem} genres={genres} catName={catName} topRated={topRated}/>
           ))
         }
-      {!topRated &&  !similar && <Link className='category__item seemore' to={`/categories/${catName}`}>SEE MORE</Link>}
+      {!topRated &&  !similar && <Link className='category__item seemore' to={`/categories/${catName}` }>SEE MORE</Link>}
       </div>
     </section>
   )
 }
 
-export default CaregoryList
+export default CategoryList

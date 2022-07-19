@@ -1,21 +1,26 @@
 import React from 'react'
-import CaregoryList from '../../components/CategoryList/CaregoryList';
+import CategoryList from '../../components/CategoryList';
 import { useState, useEffect} from 'react';
 import { useParams} from 'react-router-dom';
 import { getDetailById, getOriginalImg, getActorByMovieId,getVideoById } from '../../config';
 import "./Detail.css";
-import Actors from '../../components/Actors/Actors';
+import Actors from '../../components/Actors';
+import Favorites from './../Favorites/Favorites';
 
 const Detail = () => {
   const [watchDetail, setWatchData] = useState([]);
   const [videos,setVideos] = useState([]);
   const [watchActor, setWatchActor] = useState([]);
-  const [favoritesArr , setFavoritesArr]=useState([]);
+  const [liked,setLiked]= useState(false);
+
   
-  const { id, catName } = useParams('');
+  const {id, catName} = useParams('');
+  const [favoriteList, setFavoriteList] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0)
+   setLiked(Object.keys(localStorage.getItem("favorites")).includes(id));
+    
     getDetailById(id, catName).then(data => {
       setWatchData(data)
     })
@@ -26,9 +31,36 @@ const Detail = () => {
       setWatchActor(data.cast ? data.cast.slice(0, 6) : [] )
     })
 
-  }, [id])
 
-   
+  }, [id]);
+ 
+  function setFavorites(liked){
+    let newFl;
+    console.log(liked);
+    if(liked) {
+    console.log("fsdvr"+favoriteList);
+    newFl = favoriteList.filter(elem => elem !== id);
+    console.log(favoriteList);
+    setFavoriteList(newFl);
+    localStorage.setItem("favorites", JSON.stringify(newFl));
+
+
+      console.log(localStorage);
+      console.log(favoriteList);
+     
+    }  else
+    {favoriteList.push(id)
+      newFl = favoriteList;
+      console.log(id,favoriteList);
+      setFavoriteList(newFl);
+      localStorage.setItem("favorites",JSON.stringify(favoriteList));
+      console.log(localStorage);
+      setFavoriteList(newFl);
+    }
+    const setLike =!liked;
+    setLiked(setLike);
+    console.log(liked);
+  } 
 
  
   return (
@@ -44,10 +76,10 @@ const Detail = () => {
         <div className="content-text">
          
             <h2>{catName === 'movies' ? watchDetail.title : watchDetail.name}</h2>
-            <div className="iconLike" onClick={localStorage.setItem("favorites",JSON.stringify(watchDetail.id))}>
-              <i className="fa-solid fa-heart"></i>
+             <div className={(liked) ? "iconLike" : "iconNoLike" } >
+              <i className="fa-solid fa-heart" onClick={() => setFavorites(liked)}></i>
             </div>
-            
+             
             <div stayle='display: flex'>
             <p> Release date:  &emsp; {watchDetail.release_date}</p>
             <p> Popularity: &emsp;  {watchDetail.popularity}</p> 
@@ -79,7 +111,7 @@ const Detail = () => {
   </div>
 
 
-        <CaregoryList catName={catName} id={id} similar={true} topRated={false}  genreId={watchDetail.genres[0].id}/>
+        <CategoryList catName={catName} id={id} similar={true} topRated={false}  genreId={watchDetail.genres[0].id}/>
 
 </div>  
 
