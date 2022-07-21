@@ -3,9 +3,13 @@ import React from 'react';
 import './Collapse.css'
 
 const { Panel } = Collapse;
-const text = `
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa animi quod, expedita facere nemo laudantium quos quidem voluptatibus unde eveniet suscipit harum repellendus beatae. Assumenda, nemo modi! Necessitatibus, animi quibusdam.
-`;
+// const text = `
+// Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa animi quod, expedita facere nemo laudantium quos quidem voluptatibus unde eveniet suscipit harum repellendus beatae. Assumenda, nemo modi! Necessitatibus, animi quibusdam.
+// `;
+
+const text = <p className='text'>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi facilis dolore illo illum fuga nesciunt, corporis ipsa temporibus ipsum blanditiis eveniet incidunt explicabo recusandae maiores quos! Eum eos nihil ab!
+</p>
 
 
 const Collapses = () => {
