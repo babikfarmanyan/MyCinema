@@ -6,7 +6,7 @@ import { getDetailById, getOriginalImg, getActorByMovieId,getVideoById } from '.
 import "./Detail.css";
 import Actors from '../../components/Actors';
 
-const Detail = () => {
+const Detail = ({check,removeFromLocalStorage,addInLocalStorage}) => {
   const [watchDetail, setWatchData] = useState([]);
   const [videos,setVideos] = useState([]);
   const [watchActor, setWatchActor] = useState([]);
@@ -14,12 +14,10 @@ const Detail = () => {
 
   
   const {id, catName} = useParams('');
-  const [favoriteList, setFavoriteList] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    console.log(favoriteList);
-   setLiked(favoriteList.includes(id));
+   setLiked(check(id));
     
     getDetailById(id, catName).then(data => {
       setWatchData(data)
@@ -33,28 +31,16 @@ const Detail = () => {
 
 
   }, [id]);
+
+  
  
-  function setFavorites(liked){
-    let newFl;
-    console.log(liked);
-    if(liked) {
-    newFl = favoriteList.filter(elem => elem.id !== id);
-    console.log(newFl);
-    setFavoriteList(newFl);
-    localStorage.setItem("favorites", JSON.stringify(newFl));
-
-
-      console.log(localStorage);
-      console.log(favoriteList);
-     
-    }  else
-    {favoriteList.push(watchDetail)
-      newFl = favoriteList;
-      setFavoriteList(newFl);
-      localStorage.setItem("favorites",JSON.stringify(favoriteList));
-      setFavoriteList(newFl);
+  function setFavorites(liked) {
+    if (liked) {
+      removeFromLocalStorage(id);
+    } else {
+      addInLocalStorage(watchDetail)
     }
-    const setLike =!liked;
+    const setLike = !liked;
     setLiked(setLike);
   } 
 

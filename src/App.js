@@ -10,33 +10,39 @@ import Detail from './pages/Detail/Detail';
 import About from './pages/About/About';
 import Favorites from './pages/Favorites/Favorites';
 
+
 function App() {
 
+  function addInLocalStorage(obj) {
+    const data = JSON.parse(localStorage.getItem('favorites'));
+    if (data) {
+      localStorage.setItem("favorites",JSON.stringify(
+        [
+          obj,
+          ...data 
+        ]
+      ))
+    }else localStorage.setItem('favorites', JSON.stringify([obj]));
+  }
 
-  function setFavorites(liked){
-    let newFl;
-    console.log(liked);
-    if(liked) {
-    newFl = favoriteList.filter(elem => elem.id !== id);
-    console.log(newFl);
-    setFavoriteList(newFl);
-    localStorage.setItem("favorites", JSON.stringify(newFl));
+  function removeFromLocalStorage(id) {
+    const data = JSON.parse(localStorage.getItem('favorites'));
+    const filteredData = data.filter(item => item.id != id);
+    localStorage.setItem('favorites', JSON.stringify(filteredData));
+    
+  }
 
-
-      console.log(localStorage);
-      console.log(favoriteList);
-     
-    }  else
-    {favoriteList.push(watchDetail)
-      newFl = favoriteList;
-      setFavoriteList(newFl);
-      localStorage.setItem("favorites",JSON.stringify(favoriteList));
-      setFavoriteList(newFl);
+  function check(id){
+    const data = JSON.parse(localStorage.getItem('favorites'));
+    if(data){
+    for(let item of data){
+      if(item.id == id) return true;
     }
-    const setLike =!liked;
-    setLiked(setLike);
-  } 
+  }
+    return false;
 
+  }
+ 
 
 
   return (
@@ -46,7 +52,7 @@ function App() {
           <Routes>
               <Route path='/' element={<Home />}/>
               <Route path='/categories/:name' element={<Categories />}/>
-              <Route path='/:catName/:id' element={<Detail />}></Route>
+              <Route path='/:catName/:id' element={<Detail check={check} addInLocalStorage={addInLocalStorage} removeFromLocalStorage={removeFromLocalStorage}/>}></Route>
               <Route path='/about' element={<About />} />
               <Route path='/favorites' element={<Favorites />} />
           </Routes>
