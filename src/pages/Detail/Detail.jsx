@@ -5,7 +5,6 @@ import { useParams} from 'react-router-dom';
 import { getDetailById, getOriginalImg, getActorByMovieId,getVideoById } from '../../config';
 import "./Detail.css";
 import Actors from '../../components/Actors';
-import Favorites from './../Favorites/Favorites';
 
 const Detail = () => {
   const [watchDetail, setWatchData] = useState([]);
@@ -19,7 +18,8 @@ const Detail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-   setLiked(Object.keys(localStorage.getItem("favorites")).includes(id));
+    console.log(favoriteList);
+   setLiked(favoriteList.includes(id));
     
     getDetailById(id, catName).then(data => {
       setWatchData(data)
@@ -38,9 +38,8 @@ const Detail = () => {
     let newFl;
     console.log(liked);
     if(liked) {
-    console.log("fsdvr"+favoriteList);
-    newFl = favoriteList.filter(elem => elem !== id);
-    console.log(favoriteList);
+    newFl = favoriteList.filter(elem => elem.id !== id);
+    console.log(newFl);
     setFavoriteList(newFl);
     localStorage.setItem("favorites", JSON.stringify(newFl));
 
@@ -49,17 +48,14 @@ const Detail = () => {
       console.log(favoriteList);
      
     }  else
-    {favoriteList.push(id)
+    {favoriteList.push(watchDetail)
       newFl = favoriteList;
-      console.log(id,favoriteList);
       setFavoriteList(newFl);
       localStorage.setItem("favorites",JSON.stringify(favoriteList));
-      console.log(localStorage);
       setFavoriteList(newFl);
     }
     const setLike =!liked;
     setLiked(setLike);
-    console.log(liked);
   } 
 
  
@@ -76,9 +72,7 @@ const Detail = () => {
         <div className="content-text">
          
             <h2>{catName === 'movies' ? watchDetail.title : watchDetail.name}</h2>
-             <div className={(liked) ? "iconLike" : "iconNoLike" } >
-              <i className="fa-solid fa-heart" onClick={() => setFavorites(liked)}></i>
-            </div>
+             
              
             <div stayle='display: flex'>
             <p> Release date:  &emsp; {watchDetail.release_date}</p>
@@ -96,6 +90,9 @@ const Detail = () => {
             <p>{watchDetail.overview}</p>  
            
         </div>
+        <div className={(liked) ? "iconLike" : "iconNoLike" } >
+              <i className="fa-solid fa-heart" onClick={() => setFavorites(liked)}></i>
+            </div>
 
   
             </div>
