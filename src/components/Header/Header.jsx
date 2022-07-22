@@ -1,7 +1,7 @@
 import { NavLink as Link } from "react-router-dom";
 import {useState} from 'react';
 
-import MobileMenu from "../MobileMenu/MobileMenu";
+import MobileMenu from "../MobileMenu";
 import Search from "../Search";
 import './Header.css';
 import LogIn from "../LogIn/LogIn"; 
@@ -25,8 +25,8 @@ const Header = () => {
 
       <div className="header__navbar">
           <Link to={'/'}>Home</Link>
-          <Link to={'/categories/movies'}>Movies</Link>
-          <Link to={'/categories/serials'}>Serials</Link>
+          <Link to={'/categories/movies'} onClick={() => { localStorage.removeItem('watchListMemory') }}>Movies</Link>
+          <Link to={'/categories/serials'} onClick={() => { localStorage.removeItem('watchListMemory') }}>Serials</Link>
           <Link to={'/about'}>About</Link>
       </div>
 

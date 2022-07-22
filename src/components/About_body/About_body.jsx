@@ -4,8 +4,8 @@ import './About_body.css'
 const About_body = () => {
   return (
     <div class="about_body">
-    <h2>We’re fans at heart.</h2>
-    <p>Of movies, shows, music, and well, all things entertainment. So much so that we built an app that brings it all together—streaming services, personal media, ratings and watch lists. As beautiful as it is easy-to-use, Plex gives fans everywhere a way to discover, save, and enjoy the entertainment they love the most.</p>
+    <h2>Lorem ipsum dolor sit amet..</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ratione laudantium tempora tenetur eius inventore magnam numquam itaque animi. Iure et repudiandae non unde expedita iusto, eius fugit vitae voluptate repellendus reiciendis enim accusamus inventore, illum maiores deleniti natus quibusdam!.</p>
 </div>
   )
 }

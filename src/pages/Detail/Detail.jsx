@@ -1,10 +1,10 @@
 import React from 'react'
-import CaregoryList from '../../components/CategoryList/CaregoryList';
+import CategoryList from '../../components/CategoryList';
 import { useState, useEffect} from 'react';
 import { useParams} from 'react-router-dom';
 import { getDetailById, getOriginalImg, getActorByMovieId,getVideoById } from '../../config';
 import "./Detail.css";
-import Actors from '../../components/Actors/Actors';
+import Actors from '../../components/Actors';
 
 const Detail = () => {
   const [watchDetail, setWatchData] = useState([]);
@@ -72,7 +72,7 @@ const Detail = () => {
   </div>
 
 
-        <CaregoryList catName={catName} id={id} similar={true} topRated={false}/>
+        <CategoryList catName={catName} id={id} similar={true} topRated={false}/>
 
 </div>  
 

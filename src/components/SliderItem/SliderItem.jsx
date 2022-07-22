@@ -1,4 +1,3 @@
-import React from 'react';
 import { getOriginalImg } from '../../config';
 import {NavLink as Link} from 'react-router-dom';
 

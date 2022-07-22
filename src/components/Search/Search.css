@@ -25,11 +25,11 @@
 {
     width: 100%;
     outline: none;
-    font-size: 25px;
+    font-size: 20px;
     padding: 10px 20px;
     color: var(--mainColor);
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-bottom: 50px;
 }
 .search-box h1

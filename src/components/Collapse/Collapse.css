@@ -3,8 +3,9 @@
   }
 
   .ant-collapse {
+    width: 90% !important;
     box-sizing: border-box;
-    margin: 0;
+    margin: 50px auto !important;
     padding: 0;
     color: var(--white);
     font-size: 14px;
@@ -33,50 +34,3 @@
     background: var(--mainColor);
     color: var(--white);
   }
-
-  /* .ant-collapse content {
-    background: var(--mainColor);
-  } */
-
-  /* .text {
-    background: #333 !important;
-    color: #fff;
-  }
-
-  .ant-collapse-item-active .ant-collapse-item.active {
-    background: var(--mainColor);
-  } */
-
-  /* .ant-collapse > .ant-collapse-item {
-    padding-top: 10px;
-    border-bottom: 1px solid var(--darkGray)!important;
-    background: var(--mainColor)!important;
-}
-
-.ant-collapse {
-  background: var(--mainColor);
-  margin-bottom: 10px;
-}
-
-  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
-    position: relative;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    padding: 12px 16px;
-    color: var(--white)!important;
-    line-height: 1.5715;
-    cursor: pointer;
-    transition: all 0.3s, visibility 0s;
-}
-
-.ant-collapse-item.active {
-  background: var(--mainColor)!important;
-  color: var(--white)!important;
-}
-
-
-
-span {
-  display: block;
-} */

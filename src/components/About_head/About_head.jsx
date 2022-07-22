@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import Loading from '../Loading';
-import './Our_goal.css'
+import Loading2 from '../Loading2';
+// import <Loading2></Loading2> from '../Loading';
+import './About_head.css'
 
-const Our_goal = () => {
+const About_head = () => {
 
   const [img, setImg] = useState();
   const [loading, setLoading] = useState(true);
@@ -22,13 +23,13 @@ const Our_goal = () => {
 
 
      <div class="our_goal">
-      {loading ? <Loading /> : 
+      {loading ? <Loading2 /> : 
         <img src={img.about_img} alt="nkar"/> }
-        <p>We’re on a mission to create a global community where everyone can discover, experience, and share all of the entertainment that matters to them.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, accusamus odit? Repellat molestiae totam rem!.</p>
     </div>
  
 
   )
 }
 
-export default Our_goal;
+export default About_head;
