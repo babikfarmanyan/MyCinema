@@ -17,7 +17,7 @@ const Detail = ({check,removeFromLocalStorage,addInLocalStorage}) => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-   setLiked(check(id));
+   setLiked(check(id,catName));
     
     getDetailById(id, catName).then(data => {
       setWatchData(data)
@@ -36,9 +36,9 @@ const Detail = ({check,removeFromLocalStorage,addInLocalStorage}) => {
  
   function setFavorites(liked) {
     if (liked) {
-      removeFromLocalStorage(id);
+      removeFromLocalStorage(id,catName);
     } else {
-      addInLocalStorage(watchDetail)
+      addInLocalStorage(watchDetail,catName)
     }
     const setLike = !liked;
     setLiked(setLike);
