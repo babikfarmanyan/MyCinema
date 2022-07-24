@@ -8,7 +8,6 @@ import NotFound from './components/NotFound/NotFound';
 import Home from './pages/Home/Home';
 import Categories from './pages/Categories/Categories';
 import Detail from './pages/Detail/Detail';
-import Loading from './components/Loading';
 import About from './pages/About/About';
 import Favorites from './pages/Favorites/Favorites';
 
@@ -41,7 +40,7 @@ function App() {
   
   //checks the status of the movie , liked or not liked
   function check(id){
-    const data = JSON.parse(localStorage.getItem("favorites"));
+        const data = JSON.parse(localStorage.getItem("favorites"));
     if(data){
     for(let item of data){
       if(item.id == id) return true;
@@ -62,7 +61,7 @@ function App() {
               <Route path='/categories/:name' element={<Categories />}/>
               <Route path='/:catName/:id' element={<Detail check={check} addInLocalStorage={addInLocalStorage} removeFromLocalStorage={removeFromLocalStorage}/>}></Route>
               <Route path='/about' element={<About />} />
-              <Route path='/favorites' element={<Favorites />} />
+              <Route path='/favorites' element={<Favorites removeFromLocalStorage={removeFromLocalStorage}/>} />
               <Route path='*' element={<NotFound />} />
           </Routes>
         <Footer/>

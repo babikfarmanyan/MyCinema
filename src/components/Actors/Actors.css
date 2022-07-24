@@ -1,10 +1,11 @@
 .actorsList{ 
     display: flex;
-    justify-content: space-between;
     align-items: center;
     color: red;
     margin: 10px;
     margin-top: 50px;
+    justify-content: center;
+    gap: 15px;
 }
 
 .actor{ 
@@ -14,6 +15,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    margin: 10px;
 }
 
 .actor h2{
@@ -51,10 +53,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     height: 175px;
     width: 117px;
-    border-radius: 50%;
+    border-radius: 5px;
     opacity: .7;
     font-size: 72px;
     background-color: rgba(74, 74, 74, 0.5);
@@ -75,22 +76,31 @@
         display: none;
     }
 }
-@media (max-width: 800px)
+@media (max-width: 840px)
 {
     /* .category__item:nth-child(4)
     {
         display: none;
     } */
+    .actor:nth-child(4)
+    {
+        display: none;
+    }
+}
+@media (max-width: 740px)
+{
+    .actor:nth-child(5)
+    {
+        display: none;
+    }
+}
+
+@media (max-width: 540px)
+{
     .actor:nth-child(6)
     {
         display: none;
     }
 }
-@media (max-width: 570px)
-{
-    .actor
-    {
-        display: none;
-    }
-}
+
 

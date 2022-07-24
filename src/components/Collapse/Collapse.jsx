@@ -14,7 +14,6 @@ const text = <p className='text'>
 
 const Collapses = () => {
   const onChange = (key) => {
-    console.log(key);
   };
 
   return (

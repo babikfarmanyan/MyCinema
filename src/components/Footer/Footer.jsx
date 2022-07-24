@@ -9,8 +9,8 @@ const Footer = () => {
             <h3>Navlinks</h3>
             <div className="navlink-box">
                 <Link to={'/'}>Home</Link> 
-                <Link to={'/categories/movies'}>Movies</Link>
-                <Link to={'/categories/serials'}>Serials</Link>
+                <Link to={'/categories/movie'}>Movies</Link>
+                <Link to={'/categories/tv'}>Serials</Link>
                 <Link to={'/about'}>About</Link> 
             </div>
         </div>
