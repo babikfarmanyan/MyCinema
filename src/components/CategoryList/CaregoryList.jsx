@@ -7,7 +7,7 @@ import CategoryItem from '../CategoryItem';
 
 import './CategoryList.css'
 
-const CategoryList = ({catName, topRated , similar ,id, genreId}) => {
+const CategoryList = ({catName, topRated, similar, id}) => {
 
   const [watchData, setWatchData] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -15,17 +15,10 @@ const CategoryList = ({catName, topRated , similar ,id, genreId}) => {
   useEffect(() => {
     if (topRated) { getTopRated(catName).then(data => setWatchData(<data className="results"></data> ? data.results.slice(0, 6): [])) }
     else if (similar) {
-                    getSimilar(id, similar)
+                    getSimilar(id, catName)
                         .then(data => setWatchData(data.results ? data.results.slice(0, 6) : []))
-                        .catch(getSimilarByGenreId(catName,genreId)
-                                      .then(data => {
-                                        console.log(data);
-                                        setWatchData(data.results ? data.results.slice(0, 6): []);
-                                        
-                                      } ))
+                        .catch(error => console.log(error))
      }
-
-     
     else { getMostPopular(catName).then(data => setWatchData(data.results ? data.results.slice(0, 5): [])) };
     
     getGenres(catName).then(genres => setGenres(genres.genres));

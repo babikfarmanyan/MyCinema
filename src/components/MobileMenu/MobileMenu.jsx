@@ -11,9 +11,8 @@ const MobileMenu = ({setShowMobileMenu}) => {
         </div>
         <div className="mobile-menu__body ">
             <Link to={'/'} onClick={() => setShowMobileMenu(false)}>Home</Link>
-            <Link to={'/categories/movies'} onClick={() => setShowMobileMenu(false)}>Movies</Link>
-            <Link to={'/categories/serials'} onClick={() => setShowMobileMenu(false)}>Serials</Link>
-            <Link to={'/categories/cartoons'} onClick={() => setShowMobileMenu(false)}>Cartoons</Link>
+            <Link to={'/categories/movie'} onClick={() => setShowMobileMenu(false)}>Movies</Link>
+            <Link to={'/categories/tv'} onClick={() => setShowMobileMenu(false)}>Serials</Link>
         </div>
     </div>
   )

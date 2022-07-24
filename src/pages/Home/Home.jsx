@@ -7,11 +7,11 @@ const Home = () => {
     return (
         <>
             <Slider />
-            <CategoryList catName={'movies'} topRated={true} />
-            <CategoryList catName={'movies'} />
+            <CategoryList catName={'movie'} topRated={true} />
+            <CategoryList catName={'movie'} />
             <ShowAbout about={'about'} />
-            <CategoryList catName={'serials'} topRated={true} />
-            <CategoryList catName={'serials'} />
+            <CategoryList catName={'tv'} topRated={true} />
+            <CategoryList catName={'tv'} />
         </>
     )
 }

@@ -20,7 +20,7 @@ const Collapses = () => {
   return (
     <>
          <Collapse defaultActiveKey={['0']} onChange={onChange}>
-      <Panel header="Babik Fahramyan" key="1">
+      <Panel header="Babik Farmanyan" key="1">
         <p>{text}</p>
       </Panel>
       <Panel header="Meline Khachatryan" key="2">

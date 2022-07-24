@@ -16,7 +16,7 @@ const SearchItem = ({watchItem, setShowSearch, genres}) => {
     }
 
   return (
-    <Link to={`${'name' in watchItem ? "serial" : "movies"}/${watchItem.id}`} onClick={() => setShowSearch(false)} className='search__item'>
+    <Link to={`${'name' in watchItem ? "tv" : "movie"}/${watchItem.id}`} onClick={() => setShowSearch(false)} className='search__item'>
         <img src={getW500Img(watchItem.poster_path)} alt="" />
         <div className="search__item-content">
             <h2>{watchName}</h2>

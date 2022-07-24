@@ -2,22 +2,22 @@
     width: 75%;
     height: 60vh;
     margin: 10px auto;
-    border: 1px solid #333
 }
 
 
-h2 {
+.NotFound h2 {
     color: #fff !important;
     font-size: 30px;
     text-align: center;
 }
 
-.btn {
+.NotFound .btn {
     background: none;
-    font-size: 22px;
+    cursor: pointer;
+    font-size: 30px;
 }
 
-.btn:hover {
+.NotFound .btn:hover {
     color:red;
 }
 

@@ -14,7 +14,7 @@
     position: absolute;
     left: 5px;
     top: 5px;
-    display: flex; 
+    display: flex;
     padding: 50px 50px 0 50px ;
 }
 
@@ -36,15 +36,13 @@
     font-size: 30px;
     font-weight: 700;
     color: var(--white);  
-   
 }
 
-.detail .content  .iconLike,.iconNoLike {
+.detail .content .iconLike,.detail .content .iconNoLike {
     position: absolute;
     color: 0;
-    top:  50px;
-    right: 20px;
-
+    bottom:  0px;
+    right: 0px;
 }
 
 .detail .content  .iconNoLike .fa-heart{
@@ -65,7 +63,7 @@
 
 }
 
-.detail .content    .iconLike .fa-heart{
+.detail .content .iconLike .fa-heart{
     font-size: 30px;
     font-weight: 700;
     top:  20px;
@@ -81,9 +79,6 @@
 
 .detail .content .content-text p{
     font-size: 16px;
-    padding: 5px;
-    margin: 5px;
-   
 }
 
 .detail .content .content-text span{
@@ -111,6 +106,7 @@
     
 }
 .videosList{
+    padding-top: 70px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -174,6 +170,13 @@
         font-size: 12px;
     }
 
+    .detail .content .iconLike i, .detail .content .iconNoLike i{
+        font-size: 18px!important;
+    }
+
+    .detail .content .iconLike, .detail .content .iconNoLike{
+        top: 15px;
+    }
 
 }
 
@@ -197,7 +200,7 @@
 
 }
 
-@media (max-width: 540px)
+@media (max-width: 580px)
 {
 
     .detail .content .content-text h2{
@@ -207,13 +210,10 @@
     .detail .content .content-text p{
         font-size: 10px;
     }
-
     
-    
-    .detail .content  .iconLike,.iconNoLike {
+    .detail .content .iconLike, .detail .content .iconNoLike {
         top:  5px;
         right: 0px;
-
     }
 
     .detail .content  .iconNoLike .fa-heart{
