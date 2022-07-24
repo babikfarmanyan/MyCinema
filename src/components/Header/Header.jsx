@@ -7,9 +7,8 @@ import './Header.css';
 
 const Header = () => {
 
-  const [showLogin,setShowLogin]=useState(false); 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [showSearch, setShowSearch] = useState(false)
+  const [showSearch, setShowSearch] = useState(false);
 
   return (
     
@@ -24,8 +23,8 @@ const Header = () => {
 
       <div className="header__navbar">
           <Link to={'/'}>Home</Link>
-          <Link to={'/categories/movies'} onClick={() => { localStorage.removeItem('watchListMemory') }}>Movies</Link>
-          <Link to={'/categories/serials'} onClick={() => { localStorage.removeItem('watchListMemory') }}>Serials</Link>
+          <Link to={'/categories/movie'} onClick={() => { localStorage.removeItem('watchListMemory') }}>Movies</Link>
+          <Link to={'/categories/tv'} onClick={() => { localStorage.removeItem('watchListMemory') }}>Serials</Link>
           <Link to={'/about'}>About</Link>
       </div>
 

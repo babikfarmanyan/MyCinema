@@ -20,7 +20,7 @@ const SliderItem = ({movie, genres}) => {
                 })
               }
             </div>
-            <Link to={`/movies/${movie.id}`} className='seemore-link'>see more</Link>
+            <Link to={`/movie/${movie.id}`} className='seemore-link'>see more</Link>
         </div>
     </div>
   )

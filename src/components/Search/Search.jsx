@@ -16,8 +16,8 @@ const Search = ({showSearch, setShowSearch}) => {
     useEffect(() => {
         Promise.all(
             [
-                getGenres('movies'),
-                getGenres('serials')
+                getGenres('movie'),
+                getGenres('tv')
             ]
         ).then(response => {
             response.forEach(data => setGenres(data.genres))

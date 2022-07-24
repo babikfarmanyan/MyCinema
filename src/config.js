@@ -1,36 +1,19 @@
 import { API_KEY, API_URL, IMG_URL, w500IMG_URL } from "./api";
 
 const getMostPopular = async(catName, page = 1, startYear = 1900, endYear = 2022) => {
-    let response;
+    const response = (catName === 'movie') ? await fetch(`${API_URL}/movie/popular?api_key=${API_KEY}&primary_release_date.gte=${startYear + 1}&primary_release_date.lte=${endYear + 1}&language=en-US&page=${page}`) : await fetch(`${API_URL}/tv/popular?api_key=${API_KEY}&first_air_date.gte=${startYear + 1}&first_air_date.lte=${endYear + 1}&language=en-US&page=${page}`);
 
-    if (catName === 'movies') {
-        response = await fetch(`${API_URL}/movie/popular?api_key=${API_KEY}&primary_release_date.gte=${startYear + 1}&primary_release_date.lte=${endYear + 1}&language=en-US&page=${page}`);
-    }else if (catName === 'serials') {
-        response = await fetch(`${API_URL}/tv/popular?api_key=${API_KEY}&first_air_date.gte=${startYear + 1}&first_air_date.lte=${endYear + 1}&language=en-US&page=${page}`);
-    }
     return response.json();
 };
 
 const getTopRated = async(catName) => {
-    let response;
-
-    if (catName === 'movies') {
-        response = await fetch(`${API_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
-    }else if (catName === 'serials') {
-        response = await fetch(`${API_URL}/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
-    }
+    const response = await fetch(`${API_URL}/${catName}/top_rated?api_key=${API_KEY}&language=en-US&page=1`);
 
     return response.json();
 }
 
 const getGenres = async(catName) => {
-    let response;
-
-    if (catName === 'movies') {
-        response = await fetch(`${API_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
-    }else if (catName === 'serials') {
-        response = await fetch(`${API_URL}/genre/tv/list?api_key=${API_KEY}&language=en-US`);
-    }
+    const response = await fetch(`${API_URL}/genre/${catName}/list?api_key=${API_KEY}&language=en-US`);
 
     return response.json();
 }
@@ -49,18 +32,14 @@ const getImgFromDb = async() => {
 }
 
 const getDetailById = async (id,catName) => {
-    let response;
-   (catName === 'movies') ?  response = await fetch(`${API_URL}/movie/${id}casts?api_key=${API_KEY}`)
-    : response = await fetch(`${API_URL}/tv/${id}casts?api_key=${API_KEY}`)
-   ;
-    return response.json();
+    const response = await fetch(`${API_URL}/${catName}/${id}casts?api_key=${API_KEY}`);
 
+    return response.json();
 }   
 
-const getActorByMovieId = async (id) => {
-    let response = await fetch(`${API_URL}/movie/${id}/casts?api_key=${API_KEY}`)
+const getActorByMovieId = async (id, catName) => {
+    const response = catName === 'movie' ? await fetch(`${API_URL}/movie/${id}/casts?api_key=${API_KEY}`): await fetch(`${API_URL}/tv/${id}/credits?api_key=${API_KEY}&language=en-US`)
     return response.json();
-
 }   
  
 const searchMovie = async(query) => {
@@ -77,12 +56,11 @@ const searchSerial = async(query) => {
 
 const getMoviesByGenre = async(genres, startYear, endYear, page, name) => {
     let response;
-    // https://api.themoviedb.org/3/discover/movie?api_key=eb749c93366733af278c7f4d6d5c5fa3&language=en-US&page=1&primary_release_date.gte=2008&primary_release_date.lte=2010&with_genres=12%20%2C%2014&
 
     if (genres.length === 0) {
         return getMostPopular(name, page, startYear, endYear);
     }else {
-        if (name === 'movies') {
+        if (name === 'movie') {
             response = await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&primary_release_date.gte=${startYear}&primary_release_date.lte=${endYear}&with_genres=${genres}`);
         }else if (name === 'serials') {
             response = await fetch(`${API_URL}/discover/tv?api_key=${API_KEY}&language=en-US&first_air_date.gte=${startYear}&first_air_date.lte=${endYear}&page=${page}&with_genres=${genres}`)
@@ -92,23 +70,16 @@ const getMoviesByGenre = async(genres, startYear, endYear, page, name) => {
     return response.json();
 }
 
-const getVideoById = async(id,catName) => {
-    let response;
-    (catName === 'movies') ?  response = await fetch(`${API_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
-     : response = await fetch(`${API_URL}/tv/${id}/videos?api_key=${API_KEY}&language=en-US`);
-     return response.json();
+const getVideoById = async(id, catName) => {
+    const response =  await fetch(`${API_URL}/${catName}/${id}/videos?api_key=${API_KEY}&language=en-US`);
+
+    return response.json();
 }
-const getSimilar = async(id,catName) => {
-   
-  const response = await fetch(`${API_URL}/${catName === 'movies'? 'movie':'tv'}/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`);
+
+const getSimilar = async(id, catName) => {
+  const response = await fetch(`${API_URL}/${catName}/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`);
+
   return response.json();
 }
 
-const getSimilarByGenreId = async(catName,genreId) => {
-    const response = await fetch(`${API_URL}/discover/${catName === 'movies'? 'movie':'tv'}?api_key=${API_KEY}&language=en-US&with_genres=${genreId}&page=1`);
-  
-    return response.json();
-
-}
-
-export {getSimilarByGenreId,getSimilar,getVideoById,getMostPopular, getOriginalImg, getW500Img, getTopRated, getGenres, getMoviesByGenre, searchSerial, searchMovie,getActorByMovieId,getDetailById,getImgFromDb};
+export {getSimilar, getVideoById, getMostPopular, getOriginalImg, getW500Img, getTopRated, getGenres, getMoviesByGenre, searchSerial, searchMovie, getActorByMovieId, getDetailById, getImgFromDb};

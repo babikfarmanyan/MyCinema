@@ -40,7 +40,7 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
     })
 
     // fetch movie`s actors
-    getActorByMovieId(id).then(data => {
+    getActorByMovieId(id, catName).then(data => {
       setWatchActor(data.cast ? data.cast.slice(0, 6) : [])
     })
     getImgFromDb().then(data => setBackdropPath(data.backdrop_path));
@@ -74,7 +74,7 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
 
           <div className="content-text">
 
-            <h2>{catName === 'movies' ? watchDetail.title : watchDetail.name}</h2>
+            <h2>{catName === 'movie' ? watchDetail.title : watchDetail.name}</h2>
 
             <div stayle='display: flex'>
               <p> Release date:  &emsp; {watchDetail.release_date}</p>
@@ -103,7 +103,7 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
 
       <div className="videosList"> {videos.map(item => (<iframe key={item.key} src={`https://www.youtube.com/embed/${item.key}`}  ></iframe>))} </div>
       <div>
-      <CategoryList catName={catName} id={id} similar={true} topRated={false} genreId={watchDetail.genres[0].id} />
+      <CategoryList catName={catName} id={id} similar={true} topRated={false}/>
       </div>
     </div>
 
