@@ -24,6 +24,7 @@ const Categories = () => {
   const [loading, setLoading] = useState(true);
   const [watchItems, setWatchItems] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+  const [id, setId] = useState(undefined);
 
   let watchListMemory = JSON.parse(localStorage.getItem('watchListMemory'));
 
@@ -39,6 +40,7 @@ const Categories = () => {
       setPage(1);
       setEndYear(2022);
       setStartYear(1900);
+      setId(undefined);
     };
   }, [name])
 
@@ -49,21 +51,29 @@ const Categories = () => {
     };
 
     setLoading(true);
-    getMoviesByGenre(fetchGenres.join('%2C'), startYear, endYear, page, name).then(data => {
-      setTotalPages(data.total_pages);
-      setWatchItems(data.results.filter(item => item.poster_path !== null));
-      setLoading(false);
-      localStorage.setItem('watchListMemory', JSON.stringify(
-        [
-          {
-            startYear: startYear,
-            endYear: endYear,
-            fetchGenres: fetchGenres,
-            page: page
-          }
-        ]
-      ))
-    })
+    
+    if (id !== undefined) {
+      clearTimeout(id);
+    }
+    setId(
+      setTimeout(() => {
+        getMoviesByGenre(fetchGenres.join('%2C'), startYear, endYear, page, name).then(data => {
+          setTotalPages(data.total_pages);
+          setWatchItems(data.results.filter(item => item.poster_path !== null));
+          setLoading(false);
+          localStorage.setItem('watchListMemory', JSON.stringify(
+            [
+              {
+                startYear: startYear,
+                endYear: endYear,
+                fetchGenres: fetchGenres,
+                page: page
+              }
+            ]
+          ))
+        })
+      }, 500)
+    )
 
   }, [fetchGenres, page, startYear, endYear])
 
