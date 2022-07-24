@@ -4,20 +4,16 @@ import {getW500Img} from '../../config';
 import "./FavoritesItem.css";
 
 
-const FavoriteItem = ({watchItem,catName}) => {
-  
-  console.log(watchItem,catName);
+const FavoriteItem = ({watchItem}) => {
   return (
     <div className="favorite_item">
-    <Link  to={`/${catName}/${watchItem.id}`}>
+    <Link  to={`/${watchItem.catName}/${watchItem.id}`}>
      <div className="favorite__item__img">
         <img src={getW500Img(watchItem.poster_path)} alt="" />
       </div>
       <div className="favorite__item__content">
        
-      <h2>{catName === 'movies' ? watchItem.title : watchItem.name}</h2>
-             
-             
+      <h2>{watchItem.catName === 'movies' ? watchItem.title : watchItem.name}</h2>
              <div>
              <p>{watchItem.release_date}</p>
              <p>{watchItem.popularity}</p>

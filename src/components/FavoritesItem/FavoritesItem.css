@@ -16,8 +16,8 @@
 
 .favorite_item a .favorite__item__img{
     position: relative;
-    width: 210px;
-    height: 290px;
+    width: 175px;
+    height: 230px;
     margin: 10px;
     
 }
@@ -34,12 +34,14 @@
 .favorite_item a .favorite__item__content{
     color: var(--white);
     width: 70%;
-    margin:20px;
+    margin: 20px;
 
 }
 .favorite_item a .favorite__item__content h2{
-    padding-left: 0;
     font-size: 25px;
+    color: var(--white);
+
+
 }
 
 .favorite_item a .favorite__item__content p{
@@ -60,3 +62,51 @@
     margin: 5px;
    
 }
+
+@media (max-width: 1200px)
+{
+    .favorite_item
+    {   
+        width: 98%;
+        font-size: 80%;
+        
+    }
+
+   
+   
+  }
+
+  @media (max-width: 540px)
+{
+    .favorite_item
+    {   
+        
+        font-size: 50%;
+    }
+
+    .favorite_item a .favorite__item__img{
+        width: 60%;
+        height: 60%;
+    }
+
+    .favorite_item a .favorite__item__content{
+        margin: 15px;
+    }
+    .favorite_item a .favorite__item__content h2{
+        font-size: 15px;
+    }
+    .favorite_item a .favorite__item__content p{
+        font-size: 9px;
+        font-weight: 500;
+    }
+    .favorite_item a .favorite__item__content .genreList span{
+        font-size: 10px;
+        padding: 4px;
+        border-radius: 10px;
+        margin: 4px;
+       
+    }
+
+   
+   
+  }

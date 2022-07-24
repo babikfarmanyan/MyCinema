@@ -40,6 +40,7 @@ const Categories = () => {
       setEndYear(2022);
       setStartYear(1900);
     };
+  
   }, [name])
 
   useEffect(() => {

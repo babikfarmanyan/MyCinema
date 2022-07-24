@@ -13,28 +13,32 @@ import Favorites from './pages/Favorites/Favorites';
 
 function App() {
 
+   // add movie in localStorages
+
   function addInLocalStorage(obj,catName) {
-    const data = JSON.parse(localStorage.getItem(catName));
+    const data = JSON.parse(localStorage.getItem("favorites"));
+    obj.catName=catName;
     if (data) {
-      localStorage.setItem(catName,JSON.stringify(
+      localStorage.setItem("favorites",JSON.stringify(
         [
           obj,
           ...data 
         ]
       ))
-    }else localStorage.setItem(catName, JSON.stringify([obj]));
+    }else localStorage.setItem("favorites", JSON.stringify([obj]));
   }
 
-  function removeFromLocalStorage(id,catName) {
-    const data = JSON.parse(localStorage.getItem(catName));
+   // remove movie in localStorages
+
+  function removeFromLocalStorage(id) {
+    const data = JSON.parse(localStorage.getItem("favorites"));
     const filteredData = data.filter(item => item.id != id);
-    localStorage.setItem(catName, JSON.stringify(filteredData));
-    
+    localStorage.setItem("favorites", JSON.stringify(filteredData));
   }
-
-  function check(id,catName){
-    const data = JSON.parse(localStorage.getItem(catName));
-    console.log(catName);
+  
+  //checks the status of the movie , liked or not liked
+  function check(id){
+    const data = JSON.parse(localStorage.getItem("favorites"));
     if(data){
     for(let item of data){
       if(item.id == id) return true;

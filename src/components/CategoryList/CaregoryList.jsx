@@ -13,16 +13,20 @@ const CategoryList = ({catName, topRated , similar ,id, genreId}) => {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    if (topRated) { getTopRated(catName).then(data => setWatchData(data.results.slice(0, 6))) }
+    if (topRated) { getTopRated(catName).then(data => setWatchData(<data className="results"></data> ? data.results.slice(0, 6): [])) }
     else if (similar) {
                     getSimilar(id, similar)
-                        .then(data => setWatchData(data.results.slice(0, 6)))
+                        .then(data => setWatchData(data.results ? data.results.slice(0, 6) : []))
                         .catch(getSimilarByGenreId(catName,genreId)
-                                      .then(data => setWatchData(data.results.slice(0, 6))));
+                                      .then(data => {
+                                        console.log(data);
+                                        setWatchData(data.results ? data.results.slice(0, 6): []);
+                                        
+                                      } ))
      }
 
      
-    else { getMostPopular(catName).then(data => setWatchData(data.results.slice(0, 5))) };
+    else { getMostPopular(catName).then(data => setWatchData(data.results ? data.results.slice(0, 5): [])) };
     
     getGenres(catName).then(genres => setGenres(genres.genres));
     

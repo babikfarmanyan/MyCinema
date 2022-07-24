@@ -111,4 +111,4 @@ const getSimilarByGenreId = async(catName,genreId) => {
 
 }
 
-export {getSimilarByGenreId,getSimilar,getVideoById,getMostPopular, getOriginalImg, getW500Img, getTopRated, getGenres, getMoviesByGenre, searchSerial, searchMovie,getActorByMovieId,getDetailById};
+export {getSimilarByGenreId,getSimilar,getVideoById,getMostPopular, getOriginalImg, getW500Img, getTopRated, getGenres, getMoviesByGenre, searchSerial, searchMovie,getActorByMovieId,getDetailById,getImgFromDb};
