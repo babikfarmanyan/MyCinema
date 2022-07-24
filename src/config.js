@@ -60,11 +60,7 @@ const getMoviesByGenre = async(genres, startYear, endYear, page, name) => {
     if (genres.length === 0) {
         return getMostPopular(name, page, startYear, endYear);
     }else {
-        if (name === 'movie') {
-            response = await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&primary_release_date.gte=${startYear}&primary_release_date.lte=${endYear}&with_genres=${genres}`);
-        }else if (name === 'serials') {
-            response = await fetch(`${API_URL}/discover/tv?api_key=${API_KEY}&language=en-US&first_air_date.gte=${startYear}&first_air_date.lte=${endYear}&page=${page}&with_genres=${genres}`)
-        }
+        response = (name === 'movie') ? await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&primary_release_date.gte=${startYear}&primary_release_date.lte=${endYear}&with_genres=${genres}`) : await fetch(`${API_URL}/discover/tv?api_key=${API_KEY}&language=en-US&first_air_date.gte=${startYear}&first_air_date.lte=${endYear}&page=${page}&with_genres=${genres}`);
     }
 
     return response.json();

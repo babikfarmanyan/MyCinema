@@ -28,7 +28,7 @@ const CategoryList = ({catName, topRated, similar, id}) => {
   return (
 
     <section className="category">
-     { similar ? "" :!topRated ? <Link className='category__title link' to={`/categories/${catName}`}>{catName} by genre</Link> :  <h2 className='category__title'>Top rated {catName}</h2> }
+     { similar ? "" :!topRated ? <Link className='category__title link' to={`/categories/${catName}`}> {catName === 'movie' ? 'Movies by genre': 'Serials & Cartoons by genre'} </Link> :  <h2 className='category__title'>{catName === 'movie' ? 'Top rated movies': 'Top rated Serials & Cartoons'}</h2> }
       <div className="category__list">
         {
           watchData.map(watchItem => (
