@@ -100,7 +100,15 @@ const getVideoById = async(id,catName) => {
 }
 const getSimilar = async(id,catName) => {
    
-    const response = await fetch(`${API_URL}/${catName === 'movies'? 'movie':'tv'}/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`);
-     return response.json();
+  const response = await fetch(`${API_URL}/${catName === 'movies'? 'movie':'tv'}/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`);
+  return response.json();
 }
-export {getSimilar,getVideoById,getMostPopular, getOriginalImg, getW500Img, getTopRated, getGenres, getMoviesByGenre, searchSerial, searchMovie,getActorByMovieId,getDetailById};
+
+const getSimilarByGenreId = async(catName,genreId) => {
+    const response = await fetch(`${API_URL}/discover/${catName === 'movies'? 'movie':'tv'}?api_key=${API_KEY}&language=en-US&with_genres=${genreId}&page=1`);
+  
+    return response.json();
+
+}
+
+export {getSimilarByGenreId,getSimilar,getVideoById,getMostPopular, getOriginalImg, getW500Img, getTopRated, getGenres, getMoviesByGenre, searchSerial, searchMovie,getActorByMovieId,getDetailById,getImgFromDb};

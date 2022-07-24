@@ -4,7 +4,7 @@ import { NavLink as Link } from "react-router-dom"
 
 import './CategoryItem.css'
 
-const CategoryItem = ({watchItem, genres, catName, topRated}) => {
+const CategoryItem = ({watchItem, genres, catName}) => {
 
   const originalName = 'name' in watchItem ? watchItem.name: watchItem.title;
   const realiseDate = 'release_date' in watchItem ? watchItem.release_date.slice(0, 4): watchItem.first_air_date.slice(0, 4);

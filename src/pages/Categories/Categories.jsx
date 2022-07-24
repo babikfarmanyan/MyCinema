@@ -42,6 +42,7 @@ const Categories = () => {
       setStartYear(1900);
       setId(undefined);
     };
+  
   }, [name])
 
   useEffect(() => {

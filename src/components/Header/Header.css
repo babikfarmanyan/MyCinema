@@ -72,7 +72,8 @@
     align-items: center;
 }
 .header__icon i
-{
+{   
+    color: var(--white);
     cursor: pointer;
 }
 

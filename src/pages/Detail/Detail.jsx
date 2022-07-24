@@ -1,80 +1,111 @@
 import React from 'react'
-import CategoryList from '../../components/CategoryList';
-import { useState, useEffect} from 'react';
-import { useParams} from 'react-router-dom';
-import { getDetailById, getOriginalImg, getActorByMovieId,getVideoById } from '../../config';
-import "./Detail.css";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { getDetailById, getOriginalImg, getActorByMovieId, getVideoById, getImgFromDb } from '../../config';
 import Actors from '../../components/Actors';
+import Loading from '../../components/Loading';
+import CategoryList from '../../components/CategoryList';
+import "./Detail.css";
 
-const Detail = () => {
+
+const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
+
+
   const [watchDetail, setWatchData] = useState([]);
-  const [videos,setVideos] = useState([]);
+  const [videos, setVideos] = useState([]);
   const [watchActor, setWatchActor] = useState([]);
-  
+  const [liked, setLiked] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [backdrop_path, setBackdropPath] = useState('');
+
   const { id, catName } = useParams('');
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-    getDetailById(id, catName).then(data => {
-      setWatchData(data)
-    })
-    getVideoById(id,catName).then(data=>{
-      setVideos(data.results ? data.results.slice(0,4) : [])
-    })
-    getActorByMovieId(id).then(data=>{
-      setWatchActor(data.cast ? data.cast.slice(0, 6) : [] )
-    })
-  }, [id])
 
- 
+    window.scrollTo(0, 0)
+
+    //checks the status of the movie , liked or not liked
+    setLiked(check(id));
+
+    // fetch movie`s data
+    getDetailById(id, catName).then(data => {
+      setWatchData(data);
+      setLoading(false);
+    })
+
+
+    // fetch movie`s video
+    getVideoById(id, catName).then(data => {
+      setVideos(data.results ? data.results.slice(0, 4) : [])
+    })
+
+    // fetch movie`s actors
+    getActorByMovieId(id).then(data => {
+      setWatchActor(data.cast ? data.cast.slice(0, 6) : [])
+    })
+    getImgFromDb().then(data => setBackdropPath(data.backdrop_path));
+
+  }, [id]);
+
+
+  // remove and add movie in localStorages
+
+  function setFavorites(liked) {
+    if (liked) {
+      removeFromLocalStorage(id);
+    } else {
+      addInLocalStorage(watchDetail, catName)
+    }
+    const setLike = !liked;
+    setLiked(setLike);
+  }
+
+
   return (
-    watchDetail.id && 
-<div>
-    <div className='detail'>
-      <img className='backdrop_path' src={watchDetail.backdrop_path ? getOriginalImg(watchDetail.backdrop_path) : 'https://atalian.co.th/wp-content/uploads/sites/21/2019/07/4_Keeping-Up-with-the-Cinema-Cleanliness.png'} alt="" />
-     
-      <div className="content">
-       
-        <img className='poster_path' src={getOriginalImg(watchDetail.poster_path)} alt="" />
-       
-        <div className="content-text">
-         
-            <h2>{catName === 'movies' ? watchDetail.title : watchDetail.name}</h2>
-            <i className="fa-solid fa-heart"></i>
-            <div stayle='display: flex'>
-            <p> Release date:  &emsp; {watchDetail.release_date}</p>
-            <p> Popularity: &emsp;  {watchDetail.popularity}</p> 
-            {watchDetail.production_companies.length ? <p> Production Companies: &emsp;  {watchDetail.production_companies[0].name } </p> : "" }
+    loading ? <Loading/> :
+    <div>
       
+      <div className='detail'>
+        <img className='backdrop_path' src={watchDetail.backdrop_path ? getOriginalImg(watchDetail.backdrop_path) : backdrop_path} alt="" />
+
+        <div className="content">
+
+          <img className='poster_path' src={getOriginalImg(watchDetail.poster_path)} alt="" />
+
+          <div className="content-text">
+
+            <h2>{catName === 'movies' ? watchDetail.title : watchDetail.name}</h2>
+
+            <div stayle='display: flex'>
+              <p> Release date:  &emsp; {watchDetail.release_date}</p>
+              <p> Popularity: &emsp; {watchDetail.popularity}</p>
+              {watchDetail.production_companies.length ? <p> Production Companies: &emsp;  {watchDetail.production_companies[0].name} </p> : ""}
+
             </div>
 
             <div className="genreList">
-            <p>Genre:</p> {watchDetail.genres.map(item => <span key={item.id}>{item.name} </span>  || "null")}
-          
+              <p>Genre:</p> {watchDetail.genres.map(item => <span key={item.id}>{item.name} </span> || "null")}
+
             </div>
-           
-             
-            <p>{watchDetail.overview}</p>  
-           
+
+            <p className='none' >{watchDetail.overview}</p>
+
+          </div>
+          <div className={(liked) ? "iconLike" : "iconNoLike"} >
+            <i className="fa-solid fa-heart" onClick={() => setFavorites(liked)}></i>
+          </div>
+
         </div>
 
-  
-            </div>
-    
-  </div>
-  {watchActor.length ? <Actors actorsList={watchActor}/> : ""}
-            
- 
-  
-  <div className="videosList">
-    {videos.map(item => ( <iframe key={item.key} src={`https://www.youtube.com/embed/${item.key}`}  ></iframe>))}
-    
-  </div>
+      </div>
 
+      {watchActor.length ? <Actors actorsList={watchActor} /> : ""}
 
-        <CategoryList catName={catName} id={id} similar={true} topRated={false}/>
-
-</div>  
+      <div className="videosList"> {videos.map(item => (<iframe key={item.key} src={`https://www.youtube.com/embed/${item.key}`}  ></iframe>))} </div>
+      <div>
+      <CategoryList catName={catName} id={id} similar={true} topRated={false} genreId={watchDetail.genres[0].id} />
+      </div>
+    </div>
 
   )
 }

@@ -10,7 +10,7 @@
 .category__item__img
 {
     width: 100%;
-    height: 230px;
+    height: 240px;
     overflow: hidden;
     border-radius: 10px;
 }
@@ -60,9 +60,17 @@
         display: none;
     }
 }
-@media (max-width: 400px)
+@media (max-width: 414px)
 {
     .category__item:nth-child(5)
+    {
+        display: none;
+    }
+}
+
+@media (max-width: 280px)
+{
+    .category__item:nth-child(1)
     {
         display: none;
     }
