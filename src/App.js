@@ -40,9 +40,7 @@ function App() {
   
   //checks the status of the movie , liked or not liked
   function check(id){
-    let audio = new Audio("./Detail/voice/click.mp3");
-    audio.play();
-    const data = JSON.parse(localStorage.getItem("favorites"));
+        const data = JSON.parse(localStorage.getItem("favorites"));
     if(data){
     for(let item of data){
       if(item.id == id) return true;

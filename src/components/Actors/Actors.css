@@ -4,6 +4,8 @@
     color: red;
     margin: 10px;
     margin-top: 50px;
+    justify-content: center;
+    gap: 15px;
 }
 
 .actor{ 

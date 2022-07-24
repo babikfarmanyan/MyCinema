@@ -21,8 +21,6 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
 
   const { id, catName } = useParams('');
 
-  
-
 
   useEffect(() => {
     setLoading(true);
