@@ -10,7 +10,7 @@ const ShowAbout = () => {
            excepturi maxime asperiores illum temporibus ducimus maiores impedit quas enim porro? Ut laborum laudantium eaque facere beatae repudiandae dolorum doloremque.
             Velit amet non tenetur veritatis alias nostrum dolor. Quis rem cupiditate labore? Excepturi mollitia aspernatur saepe cupiditate iusto laborum accusantium harum possimus,
              assumenda, eum dolore voluptates. Delectus assumenda eum dolore quam facilis alias velit doloribus eveniet dolores quaerat. Similique culpa repellendus optio tenetur nam atque,
-              laborum minus ipsam, commodi, delectus error laudantium incidunt sint iusto sed temporibus sapiente vitae? <Link to={'/about'}>see more ...</Link></p>
+              laborum minus ipsam, commodi, delectus error laudantium incidunt sint iusto sed temporibus sapiente vitae?</p>
 
     </div>
   )

@@ -18,14 +18,8 @@ const CategoryList = ({catName, topRated , similar ,id, genreId}) => {
                     getSimilar(id, similar)
                         .then(data => setWatchData(data.results ? data.results.slice(0, 6) : []))
                         .catch(getSimilarByGenreId(catName,genreId)
-                                      .then(data => {
-                                        console.log(data);
-                                        setWatchData(data.results ? data.results.slice(0, 6): []);
-                                        
-                                      } ))
+                                      .then(data => { setWatchData(data.results ? data.results.slice(0, 6): []); }))
      }
-
-     
     else { getMostPopular(catName).then(data => setWatchData(data.results ? data.results.slice(0, 5): [])) };
     
     getGenres(catName).then(genres => setGenres(genres.genres));
