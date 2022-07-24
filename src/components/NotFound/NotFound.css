@@ -1,0 +1,23 @@
+.NotFound {
+    width: 75%;
+    height: 60vh;
+    margin: 10px auto;
+    border: 1px solid #333
+}
+
+
+h2 {
+    color: #fff !important;
+    font-size: 30px;
+    text-align: center;
+}
+
+.btn {
+    background: none;
+    font-size: 22px;
+}
+
+.btn:hover {
+    color:red;
+}
+

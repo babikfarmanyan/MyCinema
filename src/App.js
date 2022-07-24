@@ -1,14 +1,17 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-
+import React from 'react';
 // Components
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import NotFound from './components/NotFound/NotFound';
 // Pages
 import Home from './pages/Home/Home';
 import Categories from './pages/Categories/Categories';
 import Detail from './pages/Detail/Detail';
+import Loading from './components/Loading';
 import About from './pages/About/About';
 import Favorites from './pages/Favorites/Favorites';
+
 
 
 function App() {
@@ -60,6 +63,7 @@ function App() {
               <Route path='/:catName/:id' element={<Detail check={check} addInLocalStorage={addInLocalStorage} removeFromLocalStorage={removeFromLocalStorage}/>}></Route>
               <Route path='/about' element={<About />} />
               <Route path='/favorites' element={<Favorites />} />
+              <Route path='*' element={<NotFound />} />
           </Routes>
         <Footer/>
       </Router>
