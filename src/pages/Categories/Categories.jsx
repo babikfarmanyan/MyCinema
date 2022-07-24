@@ -81,7 +81,7 @@ const Categories = () => {
 
   return (
     <section className='categories'>
-      <h1 className="categories__title">{name} by genre</h1>
+      <h1 className="categories__title">{name === 'tv' ? 'serials' : 'movies'} by genre</h1>
       <FilterCategory genres={genres} setFetchGenres={setFetchGenres} fetchGenres={fetchGenres} setFilterClick={setFilterClick}/>
       <FilterDate startYear={startYear} setStartYear={setStartYear} endYear={endYear} setEndYear={setEndYear} setFilterClick={setFilterClick}/>
       {loading ? <Loading />:<WatchList watchItems={watchItems} name={name} genres={genres}/> }
