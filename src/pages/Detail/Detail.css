@@ -5,13 +5,13 @@
     box-sizing: border-box;
 }
 .detail .backdrop_path{
+    position: absolute;
     width: 100%;
     height: 100%;
     z-index: -1;
     opacity: 0.2;
 }
 .detail .content{
-    position: absolute;
     left: 5px;
     top: 5px;
     display: flex;
@@ -39,10 +39,7 @@
 }
 
 .detail .content .iconLike,.detail .content .iconNoLike {
-    position: absolute;
     color: 0;
-    bottom:  0px;
-    right: 0px;
 }
 
 .detail .content  .iconNoLike .fa-heart{
@@ -53,6 +50,8 @@
     background: rgba(255, 252, 252, 0.5);
     border-radius: 40%;
     color: rgba(255, 252, 252, 0.8);
+    margin-top: 400px;
+
 
 }
 
@@ -67,12 +66,14 @@
     font-size: 30px;
     font-weight: 700;
     top:  20px;
-    left: 1100px;
+    left: 100px;
     cursor: pointer;
     padding: 10px;
     color: var(--red);
     background-color: transparent;
     border-radius: 40%;
+    margin-top: 400px;
+
 
 }
 
@@ -95,7 +96,11 @@
     flex-wrap: wrap;
     font-weight: 500;
 }
+.detail .content .content-text .genreList p{
+    margin: 5px;
+    padding: 5px;
 
+}
 .detail .logoList  .logo_path{
     width: 25%;
     height: 25%;
@@ -133,6 +138,14 @@
          height: 100%;
          padding: 30px 30px 0 30px ;
     }
+
+    .detail .content .content-text{
+        margin-left: 10px ;
+    }
+
+    
+    
+
    
   }
 
@@ -151,6 +164,14 @@
     .detail .content .poster_path{
         height: 400px;
     }
+
+    .detail .content  .iconNoLike .fa-heart,
+    .detail .content  .iconLike .fa-heart{
+      
+        margin-top: 300px;
+    
+    }
+    
 }
    
   @media (max-width: 840px)
@@ -169,14 +190,14 @@
     .detail .content .content-text span{
         font-size: 12px;
     }
-
-    .detail .content .iconLike i, .detail .content .iconNoLike i{
-        font-size: 18px!important;
+    .detail .content  .iconNoLike .fa-heart,
+    .detail .content  .iconLike .fa-heart{
+      
+        margin-top: 250px;
+    
+    
     }
-
-    .detail .content .iconLike, .detail .content .iconNoLike{
-        top: 15px;
-    }
+    
 
 }
 
@@ -185,7 +206,7 @@
 
     .detail .content{
         left: -25px;
-        padding: 0 !important;
+        padding: 5px !important;
     }
     .detail .content .poster_path{
         display: none;
@@ -196,6 +217,19 @@
 
     .detail .content .content-text span{
         font-size: 10px;
+    }
+    .detail .content  .iconNoLike,
+    .detail .content  .iconLike{
+        padding-right: 5px;
+    
+    
+    }
+    .detail .content  .iconNoLike .fa-heart,
+    .detail .content  .iconLike .fa-heart{
+        font-size: 20px;
+        margin-top: 200px;
+    
+    
     }
 
 }
@@ -211,36 +245,25 @@
         font-size: 10px;
     }
     
-    .detail .content .iconLike, .detail .content .iconNoLike {
-        top:  5px;
-        right: 0px;
-    }
-
-    .detail .content  .iconNoLike .fa-heart{
-        font-size: 15px;
-        font-weight: 700;
-        cursor: pointer;
-        padding: 7px;
-
-    }
-
-
-    .detail .content .iconNoLike :hover{
-        
-        color: var(--red);
-        background-color: transparent;
-
-
-    }
-    .detail .content    .iconLike .fa-heart{
-        font-size: 30px;
-        font-weight: 700;
-        padding: 10px;
-
-    }
-
     .detail .content .content-text .none{
         display: none;
     }
+
+    .detail .content  .iconNoLike,
+    .detail .content  .iconLike{
+        padding-right: 5px;
+    
+    
+    }
+    .detail .content  .iconNoLike .fa-heart,
+    .detail .content  .iconLike .fa-heart{
+        font-size: 20px;
+        margin-top: 150px;
+    
+    
+    }
+    .detail .content{
+        padding: 30px !important ;
+   }
 
 }

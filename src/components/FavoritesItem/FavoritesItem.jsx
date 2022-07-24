@@ -4,7 +4,9 @@ import {getW500Img} from '../../config';
 import "./FavoritesItem.css";
 
 
-const FavoriteItem = ({watchItem}) => {
+const FavoriteItem = ({watchItem,removeFromLocalStorage}) => {
+  
+
   return (
     <div className="favorite_item">
     <Link  to={`/${watchItem.catName}/${watchItem.id}`}>
@@ -13,7 +15,7 @@ const FavoriteItem = ({watchItem}) => {
       </div>
       <div className="favorite__item__content">
        
-      <h2>{watchItem.catName === 'movies' ? watchItem.title : watchItem.name}</h2>
+      <h2>{watchItem.catName === 'movie' ? watchItem.title : watchItem.name}</h2>
              <div>
              <p>{watchItem.release_date}</p>
              <p>{watchItem.popularity}</p>

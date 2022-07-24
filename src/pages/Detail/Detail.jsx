@@ -17,19 +17,23 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
   const [liked, setLiked] = useState(false);
   const [loading, setLoading] = useState(true);
   const [backdrop_path, setBackdropPath] = useState('');
+  
 
   const { id, catName } = useParams('');
 
-  useEffect(() => {
+  
 
-    window.scrollTo(0, 0)
+
+  useEffect(() => {
+    setLoading(true);
+    window.scrollTo(0, 0);
+
 
     //checks the status of the movie , liked or not liked
     setLiked(check(id));
 
     // fetch movie`s data
     getDetailById(id, catName).then(data => {
-      console.log(data);
       setWatchData(data);
       setLoading(false);
     })
@@ -42,8 +46,7 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
 
     // fetch movie`s actors
     getActorByMovieId(id, catName).then(data => {
-      console.log(data);
-      setWatchActor(data.cast ? data.cast.slice(0, 6) : [])
+      setWatchActor(data.cast ? data.cast.slice(0, 7) : [])
     })
     getImgFromDb().then(data => setBackdropPath(data.backdrop_path));
 
@@ -61,6 +64,7 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
     const setLike = !liked;
     setLiked(setLike);
   }
+
 
 
   return (
@@ -81,7 +85,7 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
             <div stayle='display: flex'>
               <p> Release date:  &emsp; {watchDetail.release_date}</p>
               <p> Popularity: &emsp; {watchDetail.popularity}</p>
-              {watchDetail.production_companies ? <p> Production Companies: &emsp;  {watchDetail.production_companies[0].name} </p> : ""}
+              {!!watchDetail.production_companies && !!watchDetail.production_companies.length  ? <p> Production Companies: &emsp;  {watchDetail.production_companies[0].name} </p> : ""}
 
             </div>
 
