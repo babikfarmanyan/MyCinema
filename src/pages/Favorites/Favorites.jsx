@@ -14,7 +14,7 @@ const Favorites = () => {
 
        <h2 className='title'> Your Favorites</h2> 
           <div className='fav_list'>
-            {watchData.length ? watchData.map(watchItem => (
+            {watchData && watchData.length ? watchData.map(watchItem => (
                              <FavoriteItem key={watchItem.id} watchItem={watchItem}/>)) 
                             : <p className='emptyFVList'>You don't have any favorite movies : 	&#040;</p>
             }

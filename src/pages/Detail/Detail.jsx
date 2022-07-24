@@ -29,6 +29,7 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
 
     // fetch movie`s data
     getDetailById(id, catName).then(data => {
+      console.log(data);
       setWatchData(data);
       setLoading(false);
     })
@@ -41,6 +42,7 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
 
     // fetch movie`s actors
     getActorByMovieId(id, catName).then(data => {
+      console.log(data);
       setWatchActor(data.cast ? data.cast.slice(0, 6) : [])
     })
     getImgFromDb().then(data => setBackdropPath(data.backdrop_path));
@@ -79,13 +81,12 @@ const Detail = ({ check, removeFromLocalStorage, addInLocalStorage }) => {
             <div stayle='display: flex'>
               <p> Release date:  &emsp; {watchDetail.release_date}</p>
               <p> Popularity: &emsp; {watchDetail.popularity}</p>
-              {watchDetail.production_companies.length ? <p> Production Companies: &emsp;  {watchDetail.production_companies[0].name} </p> : ""}
+              {watchDetail.production_companies ? <p> Production Companies: &emsp;  {watchDetail.production_companies[0].name} </p> : ""}
 
             </div>
 
             <div className="genreList">
               <p>Genre:</p> {watchDetail.genres.map(item => <span key={item.id}>{item.name} </span> || "null")}
-
             </div>
 
             <p className='none' >{watchDetail.overview}</p>

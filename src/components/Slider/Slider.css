@@ -4,6 +4,10 @@
     border-radius: 10px;
     overflow: hidden;
 }
+.ant-carousel .slick-dots li.slick-active button
+{
+    background: var(--red);
+}
 /* @media (max-width: 540px) {
     .slider
     {

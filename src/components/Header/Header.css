@@ -52,7 +52,7 @@
     color: var(--white);
 }
   
-.active {
+.header__navbar a.active {
     border-bottom: 2px solid var(--white);
     line-height: -1px;
     transition: all .5s ease-in;

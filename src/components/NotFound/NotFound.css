@@ -5,19 +5,19 @@
 }
 
 
-h2 {
+.NotFound h2 {
     color: #fff !important;
     font-size: 30px;
     text-align: center;
 }
 
-.btn {
+.NotFound .btn {
     background: none;
     cursor: pointer;
     font-size: 30px;
 }
 
-.btn:hover {
+.NotFound .btn:hover {
     color:red;
 }
 
