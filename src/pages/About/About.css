@@ -30,6 +30,8 @@
 
 .about_body h2 {
    color: rgba(255, 255, 255, .6)!important;
+   text-align: center;
+   font-size: 25px;
 }
 
 .about_body p {
