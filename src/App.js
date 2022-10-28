@@ -39,6 +39,7 @@ function App() {
   }
   
   //checks the status of the movie , liked or not liked
+
   function check(id){
         const data = JSON.parse(localStorage.getItem("favorites"));
     if(data){
@@ -49,9 +50,6 @@ function App() {
     return false;
 
   }
- 
-
-
   return (
     <>
       <Router>
